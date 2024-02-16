@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+FleetManagerUI -> MDI: "api/robots/#RobotTypeName/disable" -> Patch
+activate MDI
+MDI -> MDI: Gets the RobotTypeName from the path, updates the state \n and saves the robot with the new state
+FleetManagerUI <- MDI: Response status and Json
+participant  Planning
+
+@enduml

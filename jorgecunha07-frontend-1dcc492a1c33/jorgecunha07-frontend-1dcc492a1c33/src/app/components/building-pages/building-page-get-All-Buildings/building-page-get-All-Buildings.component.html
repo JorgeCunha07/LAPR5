@@ -1,0 +1,18 @@
+<div class="page-container">
+  <h1>Building Overview</h1>
+  <div class="content-container">
+    <button (click)="onSubmit()">Load and Sort Buildings by Name</button>
+    <div class="results-container">
+      <div *ngFor="let building of results" class="result-item">
+        <div class="building-info">
+          <h2>{{ building.buildingName }}</h2>
+          <p>{{ building.buildingDescription }}</p>
+          <p>Code: {{ building.buildingCode }}</p>
+          <p>Width: {{ building.buildingSize.width }} </p>
+          <p>Length: {{ building.buildingSize.length }}</p>
+        </div>
+      </div>
+      <button type="button" class="btn-back" (click)="goBack()">Back</button>
+    </div>
+  </div>
+</div>

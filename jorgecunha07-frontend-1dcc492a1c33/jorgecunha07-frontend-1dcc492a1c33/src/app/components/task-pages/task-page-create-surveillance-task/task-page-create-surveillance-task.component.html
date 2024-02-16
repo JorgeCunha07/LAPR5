@@ -1,0 +1,68 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Create Surveillance Task</h2>
+    <form (ngSubmit)="createTransportTask()">
+      <div class="form-group">
+        <label for="name">Task Name:</label>
+        <input type="text" id="name" [(ngModel)]="task.name" name="name" [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description of the Task</label>
+        <input type="text" id="description" [(ngModel)]="task.Description" name="description" required [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <!-- From Location -->
+      <div class="form-group">
+        <label>From Location:</label>
+        <label for="fromBuilding">Select Building:</label>
+        <select id="fromBuilding" [(ngModel)]="selectedFromBuilding" (change)="onFromBuildingSelected()" [ngModelOptions]="{standalone: true}" [disabled]="fromBuildings.length === 0">
+          <option *ngFor="let building of fromBuildings" [value]="building.buildingCode">{{ building.buildingName }}</option>
+        </select>
+        <label for="fromFloorNumber">Select Floor:</label>
+        <select id="fromFloorNumber" [(ngModel)]="task.FromLocation.Room" [ngModelOptions]="{standalone: true}" [disabled]="selectedFromBuilding === undefined || fromFloors.length === 0">
+          <option *ngFor="let floor of fromFloors" [value]="floor.floorNumber">{{ floor.floorNumber }}</option>
+        </select>
+        <input type="number" placeholder="X Coordinate" [(ngModel)]="task.FromLocation.X" name="fromX" [ngModelOptions]="{standalone: true}">
+        <input type="number" placeholder="Y Coordinate" [(ngModel)]="task.FromLocation.Y" name="fromY" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="fromBuildings.length === 0" class="alert alert-warning">No buildings available.</div>
+        <div *ngIf="selectedFromBuilding !== '' && fromFloors.length === 0" class="alert alert-warning">No floors available for the selected building.</div>
+      </div>
+
+      <!-- To Location -->
+      <div class="form-group">
+        <label>To Location:</label>
+        <label for="toBuilding">Select Building:</label>
+        <select id="toBuilding" [(ngModel)]="selectedToBuilding" (change)="onToBuildingSelected()" [ngModelOptions]="{standalone: true}" [disabled]="toBuildings.length === 0">
+          <option *ngFor="let building of toBuildings" [value]="building.buildingCode">{{ building.buildingName }}</option>
+        </select>
+        <label for="toFloorNumber">Select Floor:</label>
+        <select id="toFloorNumber" [(ngModel)]="task.ToLocation.Room" [ngModelOptions]="{standalone: true}" [disabled]="selectedToBuilding === undefined || toFloors.length === 0">
+          <option *ngFor="let floor of toFloors" [value]="floor.floorNumber">{{ floor.floorNumber }}</option>
+        </select>
+        <input type="number" placeholder="X Coordinate" [(ngModel)]="task.ToLocation.X" name="fromX" [ngModelOptions]="{standalone: true}">
+        <input type="number" placeholder="Y Coordinate" [(ngModel)]="task.ToLocation.Y" name="fromY" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="toBuildings.length === 0" class="alert alert-warning">No buildings available.</div>
+        <div *ngIf="selectedToBuilding !== '' && toFloors.length === 0" class="alert alert-warning">No floors available for the selected building.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="contactInfo">Contact Info</label>
+        <input type="text" id="contactInfo" [(ngModel)]="task.ContactInfo" name="contactInfo"  required>
+      </div>
+
+      <div class="form-group">
+        <label for="user">User email</label>
+        <input type="text" id="user" [(ngModel)]="task.User" name="user" [readonly]="isReadOnly" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Create Task</button>
+        <button type="button" (click)="goBack()" class="btn-submit">Back</button>
+      </div>
+
+      <div class="alert alert-success" *ngIf="successMessage">{{successMessage}}</div>
+      <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+    </form>
+  </div>
+</div>

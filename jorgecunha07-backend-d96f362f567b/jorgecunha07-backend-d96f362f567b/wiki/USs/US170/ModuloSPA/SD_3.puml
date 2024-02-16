@@ -1,0 +1,25 @@
+@startuml Get All Buildings
+boundary "CampusManager" as x 
+participant "Building-page-get-all-building\n<<HTML>>" as HTML
+participant "Building-page-get-all-building\n<<Component>>" as Component 
+participant "BuildingService\n<<Service>>" as Service 
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC 
+
+x -> HTML: selects option to get all Building
+activate HTML
+HTML -> Component: listbuildings = loadBuildings()
+activate Component
+
+Component -> Service: listbuildings = getList()
+activate Service
+Service -> MGC: listbuildings = getList() "Get /api/buildingsAll"
+activate MGC
+deactivate MGC
+deactivate Service
+
+
+Component --> HTML: List of Buildings
+deactivate Component
+x <-- HTML: Displays the List of Buildings
+deactivate HTML
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+boundary X
+participant ":RouteBuilding" as ROUTE
+participant "BuildingController\n<<Controller>>" as CTRL
+participant "BuildingMapper\n<<Json2DTO>>" as MAPPER
+participant "BuildingDTO\n<<DTO>>" as DTO
+participant "BuildingService\n<<Service>>" as SRV
+participant "Building\n<<Entity>>" as ENTITY
+participant "BuildingRepo\n:IBuildingRepo<<Repository>>" as REPO
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : PUT/PATCH /building(json)
+activate ROUTE
+ROUTE -> CTRL : building = updateBuilding(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO : create(json)
+        deactivate MAPPER
+    CTRL -> SRV : building = updateBuilding(buildingDTO)
+        activate SRV
+        SRV -> ENTITY : building = findByCode(buildingDTO)
+        activate ENTITY
+        ENTITY -> REPO : building = findByCode(buildingDTO)
+        activate REPO
+        REPO -> DB : building = findByCode(buildingDTO)
+        activate DB
+        deactivate DB
+        deactivate REPO
+        deactivate ENTITY
+
+
+        SRV -> REPO : building = updateBuilding(building)
+            activate REPO
+               
+            REPO -> DB : save(dataBuilding)
+                activate DB
+                deactivate DB
+            deactivate REPO
+
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

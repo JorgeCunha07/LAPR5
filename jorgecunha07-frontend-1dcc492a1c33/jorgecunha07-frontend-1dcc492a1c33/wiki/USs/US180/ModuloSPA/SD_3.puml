@@ -1,0 +1,31 @@
+@startuml Get Param Buildings
+boundary "CampusManager" as x 
+participant "Building-page-get-param-building\n<<HTML>>" as HTML
+participant "Building-page-get-param-building\n<<Component>>" as Component 
+participant "BuildingService\n<<Service>>" as Service 
+participant "Building_Floor\n<<DTO>>" as DTO 
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC 
+
+x -> HTML: selects option to Get all Buildings By param
+activate HTML
+
+
+x <- HTML: Displays the form 
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: listBuildingDTO = getBuildingWithParameters()
+activate Component
+Component -> Service: listBuildingDTO = getListByParameters(minFloors,maxFloors)
+activate Service
+Service -> MGC: listBuildingDTO = getListByParameters(minFloors,maxFloors) "get /min=:param1/max=:param2"
+activate MGC
+deactivate MGC
+deactivate Service
+
+
+x <-- HTML: Displays the Buildings with parameters chosen by the user
+deactivate HTML
+
+deactivate HTML
+@enduml

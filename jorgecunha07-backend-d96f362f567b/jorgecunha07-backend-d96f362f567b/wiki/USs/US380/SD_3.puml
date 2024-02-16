@@ -1,0 +1,58 @@
+@startuml
+boundary X
+participant ":RouteRobot" as ROUTE
+participant "RobotController\n<<Controller>>" as CTRL
+participant "RobotMapper\n<<Json2DTO>>" as MAPPER
+participant "RobotDTO\n<<DTO>>" as DTO
+participant "RobotService\n<<Service>>" as SRV
+participant "Robot\n<<Entity>>" as ENTITY
+participant "RobotRepo\n:IRobotRepo<<Repository>>" as REPO
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : GET /robots/ (json)
+activate ROUTE
+ROUTE -> CTRL : getAllRobots(json)
+    activate CTRL
+
+
+    CTRL -> SRV : robotDTO = getAllRobots(robotDTO)
+        activate SRV
+
+        SRV -> REPO : getAllRobots()
+            activate REPO
+
+
+
+            REPO -> DB : getAllRobots()
+                activate DB
+                deactivate DB
+
+            deactivate REPO
+        SRV -> MAPPER : iRobotDTO[] = toDTO(robots[])
+        activate MAPPER
+          loop (while data available)
+              MAPPER -> ENTITY : robotCode = getRobotCode()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : robotName = getRobotName()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : robotDescription = getRobotDescription()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : robotSize = getRobotSize()
+                  activate ENTITY
+                  deactivate ENTITY
+          end loop
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

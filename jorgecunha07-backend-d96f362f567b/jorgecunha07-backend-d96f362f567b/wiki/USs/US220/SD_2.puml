@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+CampusManagerUI -> MDI: "api/passageway/floors/:buildingCode" -> Get
+activate MDI
+MDI -> MDI: Gets the buildingCode from the path, check if it exists and than returns all the floors with passageway to another building
+CampusManagerUI <- MDI: Response status and Json
+participant  Planning
+
+@enduml

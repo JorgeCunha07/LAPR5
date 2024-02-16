@@ -1,0 +1,34 @@
+@startuml Get All Passageways Between Buildings
+actor "User" as user
+participant "Passageway-page-get-all-passageways\n<<HTML>>" as html
+participant "PassagewayListComponent\n<<Component>>" as component
+participant "PassagewayService\n<<Service>>" as service
+participant "PassagewayRepo\n<<Repository>>" as passagewayRepo
+participant "Modulo de Gestão de Campus\n<<Backend>>" as mgc
+
+user -> html: selectViewPassageways()
+activate html
+
+html -> component: loadPassagewaysBetweenBuildings(buildingACode, buildingBCode)
+activate component
+
+component -> service: getAllPassagewaysBetweenBuildings(buildingACode, buildingBCode)
+activate service
+
+service -> mgc: "GET /api/passageways/between/buildingACode&buildingBCode"
+activate mgc
+mgc -> passagewayRepo: getAllPassagewaysBetweenBuildings(buildingACode, buildingBCode)
+activate passagewayRepo
+passagewayRepo -> mgc: return passagewaysList
+deactivate passagewayRepo
+deactivate mgc
+
+service -> component: return passagewaysList
+deactivate service
+
+component -> html: displayPassagewaysList()
+deactivate component
+
+html -> user: showPassageways()
+deactivate html
+@enduml

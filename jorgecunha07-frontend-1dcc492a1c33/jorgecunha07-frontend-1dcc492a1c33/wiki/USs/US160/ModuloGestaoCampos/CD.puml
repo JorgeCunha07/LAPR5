@@ -1,0 +1,92 @@
+@startuml
+
+package "Frameworks and Drivers Layer"  {
+    class RouteBuilding {}
+    class dbDriver {}
+}
+
+package "Interface Adapters Layers"  {
+    interface IBuildingController {
+        +updateBuilding(json)
+    }
+    class BuildingController {
+        -updateBuilding(json)
+        -validateJson(json)
+        -generateRes(json)
+    }
+    class BuildingRepo {
+        -save
+    }
+}
+
+BuildingController --> BuildingMapper : uses
+
+package "Application Services/Use Case Services"   {
+    class BuildingService {
+        -updateBuilding(buildingDTO)
+    }
+    interface IBuildingRepo {
+        -update(building)
+    }
+}
+BuildingService --> BuildingMapper : uses
+
+package "Model"  {
+    class Building {
+        +getbuildingCode()
+        +getbuildingName()
+    }
+    class BuildingCode {
+        -buildingCode
+        +getbuildingCode()
+    }
+    class BuildingName {
+        -buildingName
+        +getbuildingName()
+    }
+    class BuildingDescription {
+        -buildingDescription
+        +getbuildingDescription()
+    }
+    class BuildingSize {
+        -buildingSize
+        +getbuildingSize()
+    }
+}
+class BuildingMapper {
+    -toDTO(json)
+    -toData(building)
+}
+class BuildingDTO {
+    -buildingCode
+    -buildingName
+    -buildingDescription
+    -buildingSize
+}
+class DataBuilding {}
+
+
+
+RouteBuilding .d.> IBuildingController
+BuildingController -|> IBuildingController
+BuildingController .d.> BuildingService
+BuildingService .d.> Building
+BuildingService .r.> IBuildingRepo
+IBuildingRepo .u.> BuildingRepo
+BuildingRepo .u.> dbDriver
+
+BuildingMapper ..> BuildingDTO
+BuildingMapper ..> Building
+BuildingMapper ..> DataBuilding
+
+dbDriver ..> DataBuilding
+BuildingRepo ..> Building
+BuildingRepo ..> BuildingDTO
+
+Building <-- BuildingCode
+Building <-- BuildingName
+Building <-- BuildingDescription
+Building <-- BuildingSize
+
+
+@enduml

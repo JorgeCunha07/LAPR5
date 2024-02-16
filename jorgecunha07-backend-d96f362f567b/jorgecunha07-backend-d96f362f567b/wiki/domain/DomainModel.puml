@@ -1,0 +1,145 @@
+@startuml DomainModel
+'https://plantuml.com/class-diagram
+'skinparam linetype ortho
+
+
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+
+class Building {}
+class BuildingName {
+    -name
+}
+class BuildingCode {
+    -code
+}
+class BuildingName {
+    -name
+}
+class BuildingSize {
+    -width
+    -length
+}
+class BuildingDescription {
+    -description
+}
+
+class Floor{
+    -number
+}
+class Map {
+    -file
+}
+class OfficeDescription {
+    -description
+}
+class Office {
+    -number
+}
+class RoomDescription{
+    -description
+}
+class Room {
+    -number
+}
+class Passageway {
+    -id
+}
+class Elevator {
+    -id
+}
+class Robot {}
+class Designation {}
+class RobotState {}
+class RobotType {}
+class RobotTypeDesignation {}
+class SystemAdministrator {}
+class FleetManager {}
+class CampusManager {}
+class TaskManager {}
+class User {}
+class Task {}
+class TaskState {}
+class Destination {}
+class TaskDescription {}
+class TaskType
+note bottom: such as: \n* access to rooms to deliver/take an item\n* clear passageways \n* surveillance
+'examplo de task type: limpeza de janelas
+' a task seria limpeza da janela x no piso y do eficio z
+
+'Passageway trata-se do corredor que permite, caso o edifício o tenha, acesso a outro edifício km(a um determinado piso concretamente)
+
+class GeneralUser {}
+
+
+'class Name <<class>>
+class Location <<class>> {
+    - x
+    - y
+}
+
+FleetManager "1" --- "1..*" Robot: configures >
+FleetManager "1..*" --- "1..*" TaskType: manages >
+
+SystemAdministrator "1" --- "1..*" User: manages >
+SystemAdministrator "1" --- "1..*" FleetManager: manages >
+SystemAdministrator "1" --- "1..*" CampusManager: manages >
+SystemAdministrator "1" --- "1..*" TaskManager: manages >
+
+CampusManager "1" --- "1..*" Building: manages >
+
+
+TaskManager "1" --- "1..*" Task: aproves >
+
+Elevator "1" -- "1..*" Floor : connects >
+
+Building "1" --- "1..*" Floor: has >
+Building <-- BuildingCode
+Building <-- BuildingName
+Building <-- BuildingSize
+Building <-- BuildingDescription
+
+Elevator <-- Location
+Elevator "1" --- "1..*" Floor: acesses >
+
+Robot "1..*" -l- "1..*" Task: carries out >
+Robot "1..*" --- "1" RobotType: has >
+Robot <-- Designation
+Robot <-- RobotState
+Robot "1..*" --- "1..*" TaskType: executes >
+
+RobotType <- RobotTypeDesignation
+
+Floor "1" -- "0..*" Room: has >
+Floor "1" -- "0..*" Office: has >
+Floor <- Map
+
+Room <-l- Location
+Room <-l- RoomDescription
+Office <-l- OfficeDescription
+Office <-l- Location
+
+Task <-- TaskDescription
+Task <- Destination
+Task "1" -- "1" TaskType : has >
+TaskState -> Task
+
+Task "1" ---- "1" Floor : is delivered in a >
+
+Passageway "1" --- "2" Floor: allows access >
+Passageway <-l- Location
+User "1" -- "1..*" Task : requests >
+
+GeneralUser <|-- SystemAdministrator
+GeneralUser <|-- CampusManager
+GeneralUser <|-- TaskManager
+GeneralUser <|-- CampusManager
+GeneralUser <|-- User
+
+
+
+@enduml

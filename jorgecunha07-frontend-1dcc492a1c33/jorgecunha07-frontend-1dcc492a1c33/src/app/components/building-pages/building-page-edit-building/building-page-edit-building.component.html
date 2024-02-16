@@ -1,0 +1,36 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Edit Building</h2>
+    <p>Update the building information using the form below.</p>
+    <form (ngSubmit)="updateBuilding()">
+      <div class="form-group">
+        <label for="buildingCode">Building Code:</label>
+        <select id="buildingCode" [(ngModel)]="building.buildingCode" name="buildingCode" required (change)="onSelectBuilding(building.buildingCode)">
+          <option *ngFor="let bldg of listBuildings" [value]="bldg.buildingCode">{{ bldg.buildingCode }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="buildingName">Building Name:</label>
+        <input type="text" id="buildingName" [(ngModel)]="building.buildingName" name="buildingName" required>
+      </div>
+      <div class="form-group">
+        <label for="buildingDescription">Description:</label>
+        <textarea id="buildingDescription" [(ngModel)]="building.buildingDescription" name="buildingDescription" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="width">Width:</label>
+        <input type="number" id="width" [(ngModel)]="building.buildingSize.width" name="width" required>
+      </div>
+      <div class="form-group">
+        <label for="length">Length:</label>
+        <input type="number" id="length" [(ngModel)]="building.buildingSize.length" name="length" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Update Building</button>
+        <button type="button" class="btn-back" (click)="goBack()">Back</button>
+      </div>
+    </form>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  </div>
+</div>

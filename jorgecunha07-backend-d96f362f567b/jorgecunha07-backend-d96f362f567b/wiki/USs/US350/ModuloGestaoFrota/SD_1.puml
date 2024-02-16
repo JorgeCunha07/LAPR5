@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor  CampusManager
+participant  System
+
+activate FleetManager
+FleetManager -> System : requests creation of a robot type
+activate System
+FleetManager <- System : asks for information for the creation of robot type
+deactivate System
+FleetManager -> System : sends information to the creation of robot type
+activate System
+FleetManager <- System : delivers success or failure of the requests
+deactivate System
+
+@enduml

@@ -1,0 +1,86 @@
+@startuml
+
+package "Frameworks and Drivers Layer"  {
+    class RouteRobotType {}
+    class dbDriver {}
+}
+
+package "Interface Adapters Layers"  {
+    interface IRobotTypeController {
+        +createRobotType(json)
+    }
+    class RobotTypeController {
+        -createRobotType(json)
+    }
+    class RobotTypeRepo {
+        -save
+    }
+}
+
+RobotTypeController --> RobotTypeMapper : uses
+
+package "Application Services/Use Case Services"   {
+    class RobotTypeService {
+        -createRobotType(robotTypeDTO)
+    }
+    interface IRobotTypeRepo {
+        -save(robotType)
+    }
+}
+RobotTypeService --> RobotTypeMapper : uses
+
+package "Model"  {
+    class RobotType {
+        +create()
+        +getRobotTypeName()
+        +getRobotBrand()
+        +getRobotModel()
+        +getDescription()
+    }
+    class RobotTypeName {
+        -name
+        +create()
+        +validateTypeName()
+    }
+    class RobotModel {
+        -model
+        +create()
+    }
+    class robotBrand {
+        -brand
+        +create()
+    }
+}
+
+class RobotTypeMap {
+    -toDTO(robotType)
+    -toDomain(robotTypeDTO)
+    -toPersistence(robotType)
+}
+class RobotTypeDTO {
+    -robotTypeName
+    -description
+    -robotBrand
+    -robotModel
+    -supportedTaskTypes
+}
+
+
+RouteRobotType .d.> IRobotTypeController
+RobotTypeController -|> IRobotTypeController
+RobotTypeController .d.> RobotTypeService
+RobotTypeService .d.> RobotType
+RobotTypeService .r.> IRobotTypeRepo
+IRobotTypeRepo .u.> RobotTypeRepo
+RobotTypeRepo .u.> dbDriver
+
+RobotTypeMapper ..> RobotTypeDTO
+RobotTypeMapper ..> RobotType
+RobotTypeRepo ..> RobotType
+RobotTypeRepo ..> RobotTypeDTO
+RobotType <-- RobotTypeName
+RobotType <-- RobotModel
+RobotType <-- robotBrand
+
+
+@enduml

@@ -1,0 +1,52 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Planeamento de Tarefas</h2>
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <label>Início - Edifício</label>
+        <input type="text" [(ngModel)]="inicio.edificio" name="inicioEdificio" placeholder="Edifício">
+      </div>
+      <div class="form-group">
+        <label>Início - Piso</label>
+        <input type="text" [(ngModel)]="inicio.piso" name="inicioPiso" placeholder="Piso">
+      </div>
+      <div class="form-group">
+        <label>Início - X</label>
+        <input type="text" [(ngModel)]="inicio.x" name="inicioX" placeholder="X">
+      </div>
+      <div class="form-group">
+        <label>Início - Y</label>
+        <input type="text" [(ngModel)]="inicio.y" name="inicioY" placeholder="Y">
+      </div>
+
+      <div class="form-group">
+        <label>Fim - Edifício</label>
+        <input type="text" [(ngModel)]="fim.edificio" name="fimEdificio" placeholder="Edifício">
+      </div>
+      <div class="form-group">
+        <label>Fim - Piso</label>
+        <input type="text" [(ngModel)]="fim.piso" name="fimPiso" placeholder="Piso">
+      </div>
+      <div class="form-group">
+        <label>Fim - X</label>
+        <input type="text" [(ngModel)]="fim.x" name="fimX" placeholder="X">
+      </div>
+      <div class="form-group">
+        <label>Fim - Y</label>
+        <input type="text" [(ngModel)]="fim.y" name="fimY" placeholder="Y">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Enviar</button>
+        <button type="button" class="btn-reset" (click)="resetForm()">Reset</button>
+        <button type="button" class="btn-back" (click)="goBack()">Voltar</button>
+      </div>
+    </form>
+
+    <div *ngIf="resultado" class="alert alert-success">
+      <h3>Resultado:</h3>
+      <pre>{{ resultado | json }}</pre>
+    </div>
+
+  </div>
+</div>

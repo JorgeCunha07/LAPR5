@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4fc9004e-0ff6-4eaf-be4a-f58bd1c7d448" name="Changes" comment="Added get enabled robots">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/robotRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/robotRoute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/IControllers/IRobotController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/IControllers/IRobotController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/robotController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/robotController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repos/IRepos/IRobotRepo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repos/IRepos/IRobotRepo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repos/robotRepo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repos/robotRepo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/IServices/IRobotService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/IServices/IRobotService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/robotService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/robotService.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="UML Sequence" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2WGs6rhHPowoXcDr9O4RM0JKDdp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Sequence&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Win10/Desktop/ProjetoLapr5/BackEnd&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/jorgecunha/Desktop/LaprProjeto/BackEnd/node_modules/jest&quot;,
+    &quot;nodejs.mocha.mocha_node_package_dir&quot;: &quot;/Users/jorgecunha/Desktop/LaprProjeto/BackEnd/node_modules/mocha&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.13574219&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\ISEP\\LAPR5\\backend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/TestsE2EPostMan" />
+      <recent name="$PROJECT_DIR$/tests/unit/services" />
+      <recent name="$PROJECT_DIR$/tests/unit/controllers" />
+      <recent name="C:\Users\joao_\IdeaProjects\lapr5group76\src\mappers" />
+      <recent name="C:\Users\joao_\IdeaProjects\lapr5group76\src\persistence\schemas" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/unit/controllers" />
+      <recent name="$PROJECT_DIR$/src/domain/user" />
+      <recent name="$PROJECT_DIR$/src/domain/role" />
+      <recent name="$PROJECT_DIR$/tests/unit/domain" />
+      <recent name="$PROJECT_DIR$/tests/unit" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4fc9004e-0ff6-4eaf-be4a-f58bd1c7d448" name="Changes" comment="" />
+      <created>1696370079836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696370079836</updated>
+      <workItem from="1696370080802" duration="1364000" />
+      <workItem from="1696497596354" duration="4996000" />
+      <workItem from="1696612114313" duration="604000" />
+      <workItem from="1696785126980" duration="124000" />
+      <workItem from="1696785856065" duration="153000" />
+      <workItem from="1696881603902" duration="50000" />
+      <workItem from="1696971404207" duration="2404000" />
+      <workItem from="1696973890861" duration="3000" />
+      <workItem from="1696973920349" duration="1363000" />
+      <workItem from="1696975302043" duration="396000" />
+      <workItem from="1696975709021" duration="2067000" />
+      <workItem from="1697046409499" duration="731000" />
+      <workItem from="1697059708726" duration="725000" />
+      <workItem from="1697060467296" duration="1036000" />
+      <workItem from="1697134691310" duration="791000" />
+      <workItem from="1697135621836" duration="4203000" />
+      <workItem from="1697188258870" duration="1801000" />
+      <workItem from="1697219091729" duration="1275000" />
+      <workItem from="1697229902704" duration="2363000" />
+      <workItem from="1697275162371" duration="4144000" />
+      <workItem from="1697321318373" duration="3772000" />
+      <workItem from="1697327865192" duration="1018000" />
+      <workItem from="1697363408780" duration="32000" />
+      <workItem from="1697369759907" duration="1683000" />
+      <workItem from="1697390063123" duration="2946000" />
+      <workItem from="1697468372924" duration="2997000" />
+      <workItem from="1697472220921" duration="24000" />
+      <workItem from="1697489432178" duration="2466000" />
+      <workItem from="1697491920254" duration="20000" />
+      <workItem from="1697491954250" duration="30000" />
+      <workItem from="1697492027629" duration="29000" />
+      <workItem from="1697492057501" duration="36000" />
+      <workItem from="1697492102823" duration="1169000" />
+      <workItem from="1697564191211" duration="1446000" />
+      <workItem from="1697575562894" duration="6516000" />
+      <workItem from="1697585951097" duration="10740000" />
+      <workItem from="1697637691978" duration="629000" />
+      <workItem from="1697652240385" duration="265000" />
+      <workItem from="1697655334153" duration="1036000" />
+      <workItem from="1697665432241" duration="1539000" />
+      <workItem from="1697750449018" duration="528000" />
+      <workItem from="1697750994212" duration="15973000" />
+      <workItem from="1697825851449" duration="6508000" />
+      <workItem from="1697885802433" duration="135000" />
+      <workItem from="1697885981253" duration="1127000" />
+      <workItem from="1697888430837" duration="1104000" />
+      <workItem from="1697912336078" duration="25547000" />
+      <workItem from="1697967585650" duration="78000" />
+      <workItem from="1697967664463" duration="3070000" />
+      <workItem from="1697997237849" duration="15082000" />
+      <workItem from="1698090490229" duration="203000" />
+      <workItem from="1698090976934" duration="710000" />
+      <workItem from="1698168019791" duration="16323000" />
+      <workItem from="1698192141690" duration="6013000" />
+      <workItem from="1698344721824" duration="1571000" />
+      <workItem from="1698347372369" duration="12479000" />
+      <workItem from="1698406241213" duration="2999000" />
+      <workItem from="1698426464242" duration="7692000" />
+      <workItem from="1698495932880" duration="2615000" />
+      <workItem from="1698959800949" duration="84000" />
+      <workItem from="1702229159281" duration="1987000" />
+      <workItem from="1703977025646" duration="620000" />
+      <workItem from="1703977667010" duration="2009000" />
+      <workItem from="1704140097395" duration="58000" />
+      <workItem from="1704140213648" duration="2632000" />
+    </task>
+    <task id="LOCAL-00001" summary="Modelo Dominio.">
+      <option name="closed" value="true" />
+      <created>1696502001649</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696502001649</updated>
+    </task>
+    <task id="LOCAL-00002" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação.">
+      <option name="closed" value="true" />
+      <created>1696971503067</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696971503067</updated>
+    </task>
+    <task id="LOCAL-00003" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação.">
+      <option name="closed" value="true" />
+      <created>1696971612888</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696971612888</updated>
+    </task>
+    <task id="LOCAL-00004" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação.">
+      <option name="closed" value="true" />
+      <created>1697060273979</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697060273979</updated>
+    </task>
+    <task id="LOCAL-00005" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação.">
+      <option name="closed" value="true" />
+      <created>1697142319345</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1697142319345</updated>
+    </task>
+    <task id="LOCAL-00006" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação.">
+      <option name="closed" value="true" />
+      <created>1697144668273</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697144668273</updated>
+    </task>
+    <task id="LOCAL-00007" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação.">
+      <option name="closed" value="true" />
+      <created>1697144835474</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697144835474</updated>
+    </task>
+    <task id="LOCAL-00008" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação Fixes.">
+      <option name="closed" value="true" />
+      <created>1697210708722</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697210708722</updated>
+    </task>
+    <task id="LOCAL-00009" summary="LAP-1:&#10;US-760 -&gt;&#10;Documentação correções com base nas informações do regente de arqsi.">
+      <option name="closed" value="true" />
+      <created>1697277675017</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697277675017</updated>
+    </task>
+    <task id="LOCAL-00010" summary="LAP-1: &#10;US-760 -&gt;&#10;Documentação correções como tambem criação da informação em resposta ao Professor da TP de LAPR.">
+      <option name="closed" value="true" />
+      <created>1697327531196</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1697327531196</updated>
+    </task>
+    <task id="LOCAL-00011" summary="LAP-2: LAP-3:&#10;US-150/US-160-&gt;&#10;Criação da Documentação para as Duas USs.">
+      <option name="closed" value="true" />
+      <created>1697327579417</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697327579417</updated>
+    </task>
+    <task id="LOCAL-00012" summary="LAP-1:&#10;Fixing Documentation">
+      <option name="closed" value="true" />
+      <created>1697392412394</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697392412394</updated>
+    </task>
+    <task id="LOCAL-00013" summary="LAP-1:&#10;Fixing Documentation">
+      <option name="closed" value="true" />
+      <created>1697490517874</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1697490517874</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added Database local and Online">
+      <option name="closed" value="true" />
+      <created>1697492843308</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1697492843308</updated>
+    </task>
+    <task id="LOCAL-00015" summary="LAP-3:&#10;Fix for the update to work correctly.">
+      <option name="closed" value="true" />
+      <created>1697756524104</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1697756524104</updated>
+    </task>
+    <task id="LOCAL-00016" summary="LAP-3: &#10;Almost Fixed for the update to work correctly.&#10;&#10;LAP-4: &#10;Implemented the US-170 Listar Edificios .">
+      <option name="closed" value="true" />
+      <created>1697764270903</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1697764270903</updated>
+    </task>
+    <task id="LOCAL-00017" summary="LAP-3: &#10;Almost Fixed for the update to work correctly errors on&#10;the data schema.&#10;&#10;LAP-4: &#10;Fixed the error on the listing.">
+      <option name="closed" value="true" />
+      <created>1697844186024</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1697844186024</updated>
+    </task>
+    <task id="LOCAL-00018" summary="LAP-3: &#10;Almost Fixed for the update to work correctly errors on&#10;the data schema.&#10;&#10;LAP-4: &#10;Fixed the error on the listing.">
+      <option name="closed" value="true" />
+      <created>1697844245119</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1697844245119</updated>
+    </task>
+    <task id="LOCAL-00019" summary="LAP-2: &#10;Fixed the values object restrictions.">
+      <option name="closed" value="true" />
+      <created>1697845559898</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1697845559898</updated>
+    </task>
+    <task id="LOCAL-00020" summary="LAP-1: &#10;Fixed DDD.">
+      <option name="closed" value="true" />
+      <created>1697919997154</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1697919997154</updated>
+    </task>
+    <task id="LOCAL-00021" summary="LAP-5: LAP-6: &#10;Created the Floor Object.&#10;Created the aggregate Floor">
+      <option name="closed" value="true" />
+      <created>1697970398491</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1697970398491</updated>
+    </task>
+    <task id="LOCAL-00022" summary="LAP-2: LAP-3: LAP-4: &#10;Changes on the Documentation.">
+      <option name="closed" value="true" />
+      <created>1698008541187</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1698008541187</updated>
+    </task>
+    <task id="LOCAL-00023" summary="LAP-2: LAP-3: LAP-4: &#10;Changes on the Documentation.">
+      <option name="closed" value="true" />
+      <created>1698008577860</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1698008577860</updated>
+    </task>
+    <task id="LOCAL-00024" summary="LAP-1: &#10;Changes on the Documentation.">
+      <option name="closed" value="true" />
+      <created>1698015724638</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1698015724638</updated>
+    </task>
+    <task id="LOCAL-00025" summary="LAP-1: &#10;Test Documentation">
+      <option name="closed" value="true" />
+      <created>1698015847867</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1698015847867</updated>
+    </task>
+    <task id="LOCAL-00026" summary="LAP-1: &#10;Test Documentation">
+      <option name="closed" value="true" />
+      <created>1698015961027</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1698015961027</updated>
+    </task>
+    <task id="LOCAL-00027" summary="LAP-5: LAP-6: &#10;Finished Code">
+      <option name="closed" value="true" />
+      <created>1698186174978</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1698186174978</updated>
+    </task>
+    <task id="LOCAL-00028" summary="LAP-6: &#10;Finished Code and documentation">
+      <option name="closed" value="true" />
+      <created>1698198776049</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1698198776049</updated>
+    </task>
+    <task id="LOCAL-00029" summary="LAP-6: &#10;Finished Code and documentation">
+      <option name="closed" value="true" />
+      <created>1698198792055</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1698198792055</updated>
+    </task>
+    <task id="LOCAL-00030" summary="LAP-11: Updated code for passageway creation&#10;Unfinished : API not returning correctly for POST">
+      <created>1698412810139</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1698412810139</updated>
+    </task>
+    <task id="LOCAL-00031" summary="LAP-11: Updated code for passageway update">
+      <created>1698444508372</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1698444508372</updated>
+    </task>
+    <task id="LOCAL-00032" summary="LAP-13: Development to GET passageways between buildings">
+      <created>1698500411604</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1698500411604</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Minor Fix to tests">
+      <option name="closed" value="true" />
+      <created>1698518086833</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1698518086833</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Changed on domain Information">
+      <option name="closed" value="true" />
+      <created>1698520505417</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1698520505417</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fix Room Controller">
+      <option name="closed" value="true" />
+      <created>1698605625402</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1698605625402</updated>
+    </task>
+    <task id="LOCAL-00036" summary="TESTS E2E">
+      <option name="closed" value="true" />
+      <created>1698607619263</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1698607619263</updated>
+    </task>
+    <task id="LOCAL-00037" summary="fix autenticate">
+      <option name="closed" value="true" />
+      <created>1698608552095</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1698608552095</updated>
+    </task>
+    <task id="LOCAL-00038" summary="fix autenticates">
+      <option name="closed" value="true" />
+      <created>1698608792202</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1698608792202</updated>
+    </task>
+    <task id="LOCAL-00039" summary="fix DB">
+      <option name="closed" value="true" />
+      <created>1698608850180</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1698608850180</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fix AUTH">
+      <option name="closed" value="true" />
+      <created>1698609437067</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1698609437067</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Added get enabled robots">
+      <option name="closed" value="true" />
+      <created>1703980171716</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1703980171716</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="LAP-1:&#10;Fixing Documentation" />
+    <MESSAGE value="Added Database local and Online" />
+    <MESSAGE value="LAP-3:&#10;Fix for the update to work correctly." />
+    <MESSAGE value="LAP-3: &#10;Almost Fixed for the update to work correctly.&#10;&#10;LAP-4: &#10;Implemented the US-170 Listar Edificios ." />
+    <MESSAGE value="LAP-3: &#10;Almost Fixed for the update to work correctly errors on&#10;the data schema.&#10;&#10;LAP-4: &#10;Fixed the error on the listing." />
+    <MESSAGE value="LAP-2: &#10;Fixed the values object restrictions." />
+    <MESSAGE value="LAP-1: &#10;Fixed DDD." />
+    <MESSAGE value="LAP-5: LAP-6: &#10;Created the Floor Object.&#10;Created the aggregate Floor" />
+    <MESSAGE value="LAP-2: LAP-3: LAP-4: &#10;Changes on the Documentation." />
+    <MESSAGE value="LAP-1: &#10;Changes on the Documentation." />
+    <MESSAGE value="LAP-1: &#10;Test Documentation" />
+    <MESSAGE value="LAP-5: LAP-6: &#10;Finished Code" />
+    <MESSAGE value="LAP-6: &#10;Finished Code and documentation" />
+    <MESSAGE value="LAP-11: Updated code for passageway creation&#10;Unfinished : API not returning correctly for POST" />
+    <MESSAGE value="LAP-11: Updated code for passageway update" />
+    <MESSAGE value="LAP-13: Development to GET passageways between buildings" />
+    <MESSAGE value="Minor Fix to tests" />
+    <MESSAGE value="Changed on domain Information" />
+    <MESSAGE value="Fix Room Controller" />
+    <MESSAGE value="TESTS E2E" />
+    <MESSAGE value="fix autenticate" />
+    <MESSAGE value="fix autenticates" />
+    <MESSAGE value="fix DB" />
+    <MESSAGE value="fix AUTH" />
+    <MESSAGE value="Added get enabled robots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added get enabled robots" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LAPRGroup76$Tests_in_domain_.info" NAME="Tests in domain/ Coverage Results" MODIFIED="1698194530037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

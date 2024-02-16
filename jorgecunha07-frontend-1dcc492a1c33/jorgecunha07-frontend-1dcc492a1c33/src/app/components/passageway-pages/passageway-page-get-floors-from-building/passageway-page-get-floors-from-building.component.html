@@ -1,0 +1,29 @@
+<div class="page-container">
+  <div class="card content-container">
+    <h2>Get Floors from Building with Passageway to another Building</h2>
+    <form (ngSubmit)="getFloorsFromBuildingWithPassageway()">
+      <div class="form-group">
+        <label for="buildingCode">Building Code:</label>
+        <input type="text" id="buildingCode" [(ngModel)]="buildingCode" name="buildingACode" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-submit action-button" style="margin-top: 10px;">List Floors from Building with Passageway to another Building</button>
+        <button type="button" class="btn-back" (click)="goBack()">Back</button>
+      </div>
+    </form>
+
+    <div *ngIf="errorMessage" class="alert alert-danger" style="margin-top: 10px;">{{ errorMessage }}</div>
+
+    <!-- Display the result -->
+    <div *ngIf="results && results.length > 0">
+      <h3>Passageways:</h3>
+      <ul>
+        <li *ngFor="let passageway of results" style="margin-bottom: 25px;">
+          <p>Passageway to Building (Code): {{ passageway.buildingBCode }}</p>
+          <p>Floor on the selected building: {{ passageway.floorA }}</p>
+          <p>Floor on the found building: {{ passageway.floorB }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

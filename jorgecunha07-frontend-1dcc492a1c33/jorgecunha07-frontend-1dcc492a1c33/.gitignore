@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Generated files
+tmp/
+out-tsc/
+coverage/
+build/
+
+# IDE files
+.idea/
+.vscode/
+
+robo-drone-go/.angular
+/.angular/

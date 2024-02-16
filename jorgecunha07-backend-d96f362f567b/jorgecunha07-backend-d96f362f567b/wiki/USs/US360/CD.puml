@@ -1,0 +1,92 @@
+@startuml
+
+package "Frameworks and Drivers Layer"  {
+    class RouteRobot {}
+    class dbDriver {}
+}
+
+package "Interface Adapters Layers"  {
+    interface IRobotController {
+        +createRobot(json)
+    }
+    class RobotController {
+        -createRobot(json)
+        -validateJson(json)
+        -generateRes(json)
+    }
+    class RobotRepo {
+        -save
+    }
+}
+
+RobotController --> RobotMapper : uses
+
+package "Application Services/Use Case Services"   {
+    class RobotService {
+        -createRobot(robotDTO)
+    }
+    interface IRobotRepo {
+        -save(robot)
+    }
+}
+RobotService --> RobotMapper : uses
+
+package "Model"  {
+    class Robot {
+        +getrobotCode()
+        +getrobotName()
+    }
+    class RobotCode {
+        -robotCode
+        +getrobotCode()
+    }
+    class RobotName {
+        -robotName
+        +getrobotName()
+    }
+    class RobotDescription {
+        -robotDescription
+        +getrobotDescription()
+    }
+    class RobotSerialNumber {
+        -robotSerialNumber
+        +getrobotSerialNumber()
+    }
+}
+class RobotMapper {
+    -toDTO(json)
+    -toData(robot)
+}
+class RobotDTO {
+    -robotCode
+    -robotName
+    -robotDescription
+    -robotSerialNumber
+}
+class DataRobot {}
+
+
+
+RouteRobot .d.> IRobotController
+RobotController -|> IRobotController
+RobotController .d.> RobotService
+RobotService .d.> Robot
+RobotService .r.> IRobotRepo
+IRobotRepo .u.> RobotRepo
+RobotRepo .u.> dbDriver
+
+RobotMapper ..> RobotDTO
+RobotMapper ..> Robot
+RobotMapper ..> DataRobot
+
+dbDriver ..> DataRobot
+RobotRepo ..> Robot
+RobotRepo ..> RobotDTO
+
+Robot <-- RobotCode
+Robot <-- RobotName
+Robot <-- RobotDescription
+Robot <-- RobotSerialNumber
+
+
+@enduml

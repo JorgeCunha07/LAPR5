@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+participant  CampusManager
+participant  RoboDroneGo
+
+activate CampusManager
+CampusManager -> RoboDroneGo : requests creation of floor
+activate RoboDroneGo
+CampusManager <- RoboDroneGo : asks for information for the creation of floor
+deactivate RoboDroneGo
+CampusManager -> RoboDroneGo : sends information to the creation of floor
+activate RoboDroneGo
+CampusManager <- RoboDroneGo : delivers success or failure of the requests
+deactivate RoboDroneGo
+
+@enduml

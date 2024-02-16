@@ -1,0 +1,43 @@
+@startuml Update Elevator
+boundary "CampusManager" as x
+participant "Elevator-page-edit-elevator\n<<HTML>>" as HTML
+participant "Elevator-page-edit-elevator\n<<Component>>" as Component
+participant "ElevatorService\n<<Service>>" as Service
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC
+
+x -> HTML: selects option to update Elevator
+activate HTML
+HTML -> Component: listelevators = loadElevators()
+activate Component
+
+Component -> Service: listelevators = getList()
+activate Service
+Service -> MGC: listelevators = getList() "Get /api/elevators/buildingFinderId=param1\"
+activate MGC
+deactivate MGC
+deactivate Service
+deactivate Component
+
+
+x <- HTML: Displays the form to update a elevator
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: updateElevator()
+activate Component
+Component -> DTO: elevatorDTO = updateElevator()
+activate DTO
+deactivate DTO
+Component -> Service: response = updateElevator(elevatorDTO)
+activate Service
+Service -> MGC: responseElevator = updateElevator(elevatorDTO) "Patch /api/elevators"
+activate MGC
+deactivate MGC
+deactivate Service
+
+Component --> HTML: responseMessage
+HTML --> x: Displays the responseMessage
+deactivate Component
+
+deactivate HTML
+@enduml

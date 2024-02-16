@@ -1,0 +1,7 @@
+@startuml
+skinparam actorStyle awesome
+:CampusManager: --> (Use)
+
+"List floors from a building with passageway to another building " as (Use)
+
+@enduml

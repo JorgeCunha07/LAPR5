@@ -1,0 +1,88 @@
+@startuml
+
+
+boundary X
+participant ":RouteRobot" as ROUTE
+participant "RobotController\n<<Controller>>" as CTRL
+participant "RobotMapper\n<<Json2DTO>>" as MAPPER
+participant "RobotDTO\n<<DTO>>" as DTO
+participant "RobotService\n<<Service>>" as SRV
+participant "Robot\n<<Entity>>" as ENTITY
+participant "RobotRepo\n:IRobotRepo<<Repository>>" as REPO
+participant "RobotMap\n<<Domain2Data>>" as MAPPER2
+participant "DataRobot<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : POST /robot(json)
+activate ROUTE
+ROUTE -> CTRL : createRobot(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO** : create(json)
+        deactivate MAPPER
+    CTRL -> SRV : robotDTO = createRobot(robotDTO)
+        activate SRV
+        SRV -> ENTITY** : robot = create(robotDTO)
+        SRV -> REPO : save(robot)
+            activate REPO
+            REPO -> MAPPER2 : dataRobot = toData(robot)
+                activate MAPPER2
+                MAPPER2 -> ENTITY : getCode()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getNickname()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getSerialNumber()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getRobotTypeName()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getEnabled()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> DATA** : dataRobot = create(robotCode, robotNickname, serialNumber, description, robotTypeNane, enabled)
+                deactivate MAPPER2
+            REPO -> DB : save(dataRobot)
+                activate DB
+                deactivate DB
+            deactivate REPO
+        SRV -> MAPPER : toDTO(robot)
+            activate MAPPER
+                MAPPER -> ENTITY : getCode()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getNickname()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getSerialNumber()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getRobotTypeName()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getEnabled()
+                    activate ENTITY
+                    deactivate ENTITY
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+
+
+boundary X
+participant ":RouteFloor" as ROUTE
+participant "FloorController\n<<Controller>>" as CTRL
+participant "FloorMapper\n<<Json2DTO>>" as MAPPER
+participant "FloorDTO\n<<DTO>>" as DTO
+participant "FloorService\n<<Service>>" as SRV
+participant "BuildingService\n<<Service>>" as SRV2
+participant "Floor\n<<Entity>>" as ENTITY
+participant "FloorRepo\n:IFloorRepo<<Repository>>" as REPO
+participant "BuildingRepo\n:IBuildingRepo<<Repository>>" as REPO2
+participant "FloorgMap\n<<Domain2Data>>" as MAPPER2
+participant "DataFloor<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : POST /Floor (json)
+activate ROUTE
+ROUTE -> CTRL : createFloor(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO : create(json)
+        activate DTO
+        deactivate DTO
+        deactivate MAPPER
+    CTRL -> SRV : buildingDTO = createFloor(floorDTO)
+        activate SRV
+        SRV -> SRV2 : building = findBuilding(buildingFinderId)
+        activate SRV2
+        SRV2 -> REPO2 : building = findBuilding(buildingFinderId)
+        activate REPO2
+        REPO2 -> DB : building = findBuilding(buildingFinderId)
+        activate DB
+        deactivate DB
+        deactivate SRV2
+        deactivate REPO2
+        SRV -> ENTITY : floor = create(floorDTO)
+        activate ENTITY
+        deactivate ENTITY
+        SRV -> REPO : floorDto = save(floor)
+            activate REPO
+
+            REPO -> DB : floorDto = save(dataBuilding)
+                activate DB
+                deactivate DB
+            deactivate REPO
+
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

@@ -1,0 +1,88 @@
+@startuml
+
+
+boundary X
+participant ":RouteRoom" as ROUTE
+participant "RoomController\n<<Controller>>" as CTRL
+participant "RoomMapper\n<<Json2DTO>>" as MAPPER
+participant "RoomDTO\n<<DTO>>" as DTO
+participant "RoomService\n<<Service>>" as SRV
+participant "Room\n<<Entity>>" as ENTITY
+participant "RoomRepo\n:IRoomRepo<<Repository>>" as REPO
+participant "RoomMap\n<<Domain2Data>>" as MAPPER2
+participant "DataRoom<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : POST /room(json)
+activate ROUTE
+ROUTE -> CTRL : createRoom(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO** : create(json)
+        deactivate MAPPER
+    CTRL -> SRV : roomDTO = createRoom(roomDTO)
+        activate SRV
+        SRV -> ENTITY** : room = create(roomDTO)
+        SRV -> REPO : save(room)
+            activate REPO
+            REPO -> MAPPER2 : dataRoom = toData(room)
+                activate MAPPER2
+                MAPPER2 -> ENTITY : getId()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getName()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getType()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getRoomDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getRoomBuildingFinderId()
+                    activate ENTITY
+                    deactivate ENTITY
+                 MAPPER2 -> ENTITY : getRoomFloorNumber()
+                     activate ENTITY
+                     deactivate ENTITY
+                MAPPER2 -> DATA** : dataRoom = create(roomId, roomName,roomType,roomDescription,RoomBuildingFinderId,RoomFloorNumber)
+                deactivate MAPPER2
+            REPO -> DB : save(dataRoom)
+                activate DB
+                deactivate DB
+            deactivate REPO
+        SRV -> MAPPER : toDTO(room)
+            activate MAPPER
+            MAPPER -> ENTITY : roomId = getRoomId()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : roomName = getRoomName()
+                activate ENTITY
+                deactivate ENTITY
+         MAPPER -> ENTITY : roomType = getRoomType()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : roomDescription = getRoomDescription()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : getRoomBuildingFinderId()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : getRoomFloorNumber()
+                activate ENTITY
+                deactivate ENTITY
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor  CampusManager
+participant  RoboDroneGo
+
+activate CampusManager
+CampusManager -> RoboDroneGo : requests update of the building
+activate RoboDroneGo
+CampusManager <- RoboDroneGo : asks for information for the update of building
+deactivate RoboDroneGo
+CampusManager -> RoboDroneGo : sends information to the update of building
+activate RoboDroneGo
+CampusManager <- RoboDroneGo : delivers success or failure of the request update
+deactivate RoboDroneGo
+
+@enduml

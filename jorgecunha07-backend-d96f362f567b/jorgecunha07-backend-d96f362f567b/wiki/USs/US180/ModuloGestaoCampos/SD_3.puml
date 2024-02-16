@@ -1,0 +1,91 @@
+@startuml
+boundary X
+participant ":RouteBuilding" as ROUTE
+participant "BuildingController\n<<Controller>>" as CTRL
+participant "BuildingMapper\n<<Json2DTO>>" as MAPPER
+participant "FloorMapper\n<<Json2DTO>>" as MAPPER2
+participant "BuildingDTO\n<<DTO>>" as DTO
+participant "Building_FloorsDTO\n<<DTO>>" as DTO2
+participant "BuildingService\n<<Service>>" as SRV2
+participant "FloorService\n<<Service>>" as SRV
+participant "Building\n<<Entity>>" as ENTITY
+participant "BuildingRepo\n:IBuildingRepo<<Repository>>" as REPO
+participant "FloorRepo\n:IFloorRepo<<Repository>>" as REPO2
+participant "BuildingMap\n<<Domain2Data>>" as MAPPER2
+participant "DataBuilding<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : GET/building/min=:param1/max=:param2(json)
+activate ROUTE
+ROUTE -> CTRL : getFloorsByParameters(param1, param2, req, res, next)
+    activate CTRL
+    CTRL -> SRV2 : building_FloorsDTOList[] =  getFloorsByParameters(param1, param2, req, res, next)
+    activate SRV2
+
+
+        SRV2 -> REPO :buildings[] = getAllBuilding()
+            activate REPO
+
+
+
+            REPO -> DB : getAllBuilding()
+                activate DB
+                deactivate DB
+
+            deactivate REPO
+        SRV2 -> MAPPER : iBuildingDTO[] = toDTO(buildings[])
+        activate MAPPER
+          loop (while data available)
+              MAPPER -> ENTITY : buildingCode = getBuildingCode()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : buildingName = getBuildingName()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : buildingDescription = getBuildingDescription()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : buildingSize = getBuildingSize()
+                  activate ENTITY
+                  deactivate ENTITY
+          end loop
+            deactivate MAPPER
+
+        loop (while buildingDTO[] has next)
+          alt size >= param1 && param <= param2
+        SRV2 -> SRV : quantityFloors = findFloorsByBuilding(buildingDTO[].buildingCode)
+               activate SRV
+
+               SRV -> REPO2 : findFloorsByBuilding(buildingCode)
+                   activate REPO2
+
+                   REPO2 -> DB : findFloorsByBuilding(buildingCode)
+                   activate DB
+                   deactivate DB
+
+                   deactivate REPO2
+                   deactivate SRV
+
+
+
+                  SRV2 -> MAPPER2 : building_FloorsDTO = toDTO(building , quantityFloors)
+                  activate MAPPER2
+                  deactivate MAPPER2
+                          SRV2 -> SRV2 :  building_FloorsDTOList[].push(building_FloorsDTO);
+                          activate SRV2
+                          deactivate SRV2
+                          deactivate SRV2
+                   end alt
+
+        end loop
+
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

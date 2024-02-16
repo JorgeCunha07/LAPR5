@@ -1,0 +1,87 @@
+@startuml
+
+
+boundary X
+participant ":RouteFloor" as ROUTE
+participant "FloorController\n<<Controller>>" as CTRL
+participant "FloorMapper\n<<Json2DTO>>" as MAPPER
+participant "FloorDTO\n<<DTO>>" as DTO
+participant "FloorService\n<<Service>>" as SRV
+participant "BuildingService\n<<Service>>" as SRV2
+participant "Floor\n<<Entity>>" as ENTITY
+participant "FloorRepo\n:IFloorRepo<<Repository>>" as REPO
+participant "BuildingRepo\n:IBuildingRepo<<Repository>>" as REPO2
+participant "FloorgMap\n<<Domain2Data>>" as MAPPER2
+participant "DataFloor<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : PATCH /Floor (json)
+activate ROUTE
+ROUTE -> CTRL : updateFloor(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO** : create(json)
+        deactivate MAPPER
+    CTRL -> SRV : floorDTO = updateFloor(floorDTO)
+        activate SRV
+        SRV -> SRV2 : building = findBuilding(buildingFinderId)
+        activate SRV2
+        SRV2 -> REPO2 : building = findBuilding(buildingFinderId)
+        activate REPO2
+        REPO2 -> DB : building = findBuilding(buildingFinderId)
+        activate DB
+        deactivate DB
+        deactivate SRV2
+        deactivate REPO2
+        SRV -> ENTITY** : floor = update(floorDTO)
+        SRV -> REPO : save(floor)
+            activate REPO
+            REPO -> MAPPER2 : dataFloor = toData(floor)
+                activate MAPPER2
+                MAPPER2 -> ENTITY : getFloorNumber()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getFloorDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getFloorMap()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getFloorMaxDimensions()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> DATA** : datafloor = update(floorDescription,floorMap,floorMaxDimensions,floorNumber)
+                deactivate MAPPER2
+            REPO -> DB : save(dataFloor)
+                activate DB
+                deactivate DB
+            deactivate REPO
+        SRV -> MAPPER : toDTO(floor)
+            activate MAPPER
+            MAPPER -> ENTITY : floorNumber = getFloorNumber()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : floorDescription = getFloorDescription()
+                activate ENTITY
+                deactivate ENTITY
+         MAPPER -> ENTITY : floorMap = getFloorMap()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : floorMaxDimensions = getFloorMaxDimensions()
+                activate ENTITY
+                deactivate ENTITY
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

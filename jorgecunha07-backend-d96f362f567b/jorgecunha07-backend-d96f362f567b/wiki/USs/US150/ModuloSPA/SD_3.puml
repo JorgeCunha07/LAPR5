@@ -1,0 +1,32 @@
+@startuml Create Building
+boundary "CampusManager" as x 
+participant "Building-page-create-building\n<<HTML>>" as HTML
+participant "Building-page-create-building\n<<Component>>" as Component 
+participant "BuildingService\n<<Service>>" as Service 
+participant "Building\n<<DTO>>" as DTO 
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC 
+
+x -> HTML: selects option to create Building
+activate HTML
+x <- HTML: Displays the form to create a building
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: buildingResponse = createBuilding()
+activate Component
+Component -> DTO: buildingDTO = createBuilding()
+activate DTO
+deactivate DTO
+Component -> Service: response =createBuilding(buildingDTO)
+activate Service
+Service -> MGC: buildingResponse =createBuilding(buildingDTO)\n "Post /api/buildings"
+activate MGC
+deactivate MGC
+deactivate Service
+
+Component --> HTML: responseMessage
+HTML --> x: shows responseMessage
+deactivate Component
+
+deactivate HTML
+@enduml

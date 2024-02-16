@@ -1,0 +1,52 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Task List</h2>
+
+    <!-- Search Filters -->
+    <div class="form-group">
+      <label for="taskType">Task Type:</label>
+      <input type="text" id="taskType" [(ngModel)]="filter.taskType" placeholder="Filter by Task Type">
+    </div>
+
+    <div class="form-group">
+      <label for="taskStatus">Task Status:</label>
+      <input type="text" id="taskStatus" [(ngModel)]="filter.taskStatus" placeholder="Filter by Task Status">
+    </div>
+
+    <div class="form-group">
+      <label for="user">User:</label>
+      <input type="text" id="user" [(ngModel)]="filter.user" placeholder="Filter by User">
+    </div>
+
+    <!-- Task Table -->
+    <table>
+      <thead>
+      <tr>
+        <th (click)="sortTable('id')">ID</th>
+        <th (click)="sortTable('name')">Task Name</th>
+        <th (click)="sortTable('description')">Description</th>
+        <th (click)="sortTable('taskType')">Type of Task</th>
+        <th (click)="sortTable('taskStatus')">Task Status</th>
+        <th (click)="sortTable('user')">User</th>
+        <th (click)="sortTable('robotId')">Robot ID</th>
+        <th (click)="sortTable('robotType')">Robot Type</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of filteredTasks">
+        <td>{{ task.id }}</td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.taskType }}</td>
+        <td>{{ task.taskStatus }}</td>
+        <td>{{ task.user }}</td>
+        <td>{{ task.robotId }}</td>
+        <td>{{ task.robotType }}</td>
+
+      </tr>
+      </tbody>
+    </table>
+    <button (click)="goBack()" class="btn-submit">Go Back</button>
+  </div>
+</div>

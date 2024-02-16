@@ -1,0 +1,31 @@
+@startuml
+boundary "CampusManager" as x
+participant "Passageway-page-get-Passageways-from-building\n<<HTML>>" as HTML
+participant "Passageway-page-get-Passageways-from-building\n<<Component>>" as Component
+participant "PassagewayService\n<<Service>>" as Service
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC
+
+x -> HTML: selects option to Get all Passageways By Building
+activate HTML
+
+
+x <- HTML: Displays the form
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: PassagewayDTO = getFloorsFromBuildingWithPassageway()
+activate Component
+Component -> Service: PassagewayDTO = getFloorsFromBuildingWithPassageway(buildingFinderId)
+activate Service
+Service -> MGC: PassagewayDTO = getFloorsFromBuildingWithPassageway(buildingFinderId) "get buildingFinderId=param1"
+activate MGC
+deactivate MGC
+deactivate Service
+
+
+x <-- HTML: Displays the Passageways with parameters chosen by the user
+deactivate HTML
+
+deactivate HTML
+
+@enduml

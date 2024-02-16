@@ -1,0 +1,48 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Create new Robot</h2>
+
+    <!-- Display success or error message -->
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <!-- Robot creation form -->
+    <form (ngSubmit)="createRobot()">
+      <!-- Robot code -->
+      <div class="form-group">
+        <label for="robotCode">Robot Code:</label>
+        <input type="text" class="form-control" id="robotCode" [(ngModel)]="robot.robotCode" name="robotCode" required>
+      </div>
+
+      <!-- Robot description -->
+      <div class="form-group">
+        <label for="robotDescription">Robot Description:</label>
+        <input type="text" class="form-control" id="robotDescription" [(ngModel)]="robot.robotDescription" name="robotDescription" required>
+      </div>
+
+      <!-- Robot nickname -->
+      <div class="form-group">
+        <label for="robotNickname">Robot Nickname:</label>
+        <input type="text" class="form-control" id="robotNickname" [(ngModel)]="robot.robotNickname" name="robotNickname" required>
+      </div>
+
+      <!-- Robot serial number -->
+      <div class="form-group">
+        <label for="robotSerialNumber">Robot Serial Number:</label>
+        <input type="text" class="form-control" id="robotSerialNumber" [(ngModel)]="robot.robotSerialNumber" name="robotSerialNumber" required>
+      </div>
+
+      <!-- Robot type name -->
+      <div class="form-group">
+        <label for="robotTypeName">Robot Type Name:</label>
+        <input type="text" class="form-control" id="robotTypeName" [(ngModel)]="robot.robotTypeName" name="robotTypeName" required>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-submit">Create Robot</button>
+        <button type="button" class="btn-back" (click)="goBack()">Back</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+@startuml
+
+package "Frameworks and Drivers Layer"  {
+    class RoutePassageway {}
+    class dbDriver {}
+}
+
+package "Interface Adapters Layers"  {
+    interface IPassagewayController {
+        +createPassageway(json)
+    }
+    class PassagewayController {
+        -createPassageway(json)
+        -validateJson(json)
+        -generateRes(json)
+    }
+    class PassagewayRepo {
+        -save
+    }
+}
+
+PassagewayController --> PassagewayMapper : uses
+
+package "Application Services/Use Case Services"   {
+    class PassagewayService {
+        -createPassageway(passagewayDTO)
+    }
+    interface IPassagewayRepo {
+        -save(passageway)
+    }
+}
+PassagewayService --> PassagewayMapper : uses
+
+package "Model"  {
+    class Passageway {
+        +getBuildingCodeA()
+        +getBuildingCodeB()
+        +getFloorCodeA()
+        +getFloorCodeB()
+    }
+    class BuildingCodeA {
+        -buildingCodeA
+        +getbuildingCodeA()
+    }
+    class BuildingCodeB {
+        -buildingCodeB
+        +getbuildingCodeB()
+    }
+    class FloorCodeA {
+        -floorCodeA
+        +getFloorCodeA()
+    }
+    class FloorCodeB {
+        -floorCodeB
+        +getFloorCodeB()
+    }
+    class Location {
+        -locationA
+        -locationB
+    }
+}
+class PassagewayMapper {
+    -toDTO(json)
+    -toData(passageway)
+}
+class PassagewayDTO {
+    -buildingCodeA
+    -buildingCodeB
+    -floorCodeA
+    -floorCodeB
+    -locationA
+    -locationB
+}
+class DataPassageway {}
+
+
+
+RoutePassageway .d.> IPassagewayController
+PassagewayController -|> IPassagewayController
+PassagewayController .d.> PassagewayService
+PassagewayService .d.> Passageway
+PassagewayService .r.> IPassagewayRepo
+IPassagewayRepo .u.> PassagewayRepo
+PassagewayRepo .u.> dbDriver
+
+PassagewayMapper ..> PassagewayDTO
+PassagewayMapper ..> Passageway
+PassagewayMapper ..> DataPassageway
+
+dbDriver ..> DataPassageway
+PassagewayRepo ..> Passageway
+PassagewayRepo ..> PassagewayDTO
+
+Passageway <-- BuildingCodeA
+Passageway <-- BuildingCodeB
+Passageway <-- FloorCodeA
+Passageway <-- FloorCodeB
+Passageway <-- Location
+
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+CampusManagerUI -> MDI: "api/passageway" -> GET
+activate MDI
+MDI -> MDI: Handles the request,\n gets all the building information
+CampusManagerUI <- MDI: Response status and Json
+participant  Planning
+
+
+
+
+@enduml

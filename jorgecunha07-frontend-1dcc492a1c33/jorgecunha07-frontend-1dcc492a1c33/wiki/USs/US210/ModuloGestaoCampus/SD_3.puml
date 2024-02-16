@@ -1,0 +1,60 @@
+@startuml
+boundary X
+participant ":RouteFloor" as ROUTE
+participant "FloorController\n<<Controller>>" as CTRL
+participant "FloorMapper\n<<Json2DTO>>" as MAPPER
+participant "FloorDTO\n<<DTO>>" as DTO
+participant "FloorService\n<<Service>>" as SRV
+participant "Floor\n<<Entity>>" as ENTITY
+participant "FloorRepo\n:IFloorRepo<<Repository>>" as REPO
+participant "FloorMap\n<<Domain2Data>>" as MAPPER2
+participant "DataFloor<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : GET /floors/all (json)
+activate ROUTE
+ROUTE -> CTRL : getFloorsByBuilding(param1: string)
+    activate CTRL
+
+
+    CTRL -> SRV : floorDTO = getFloorsByBuilding(floorDTO)
+        activate SRV
+
+        SRV -> REPO : getFloorsByBuilding
+            activate REPO
+
+
+
+            REPO -> DB : getFloorsByBuilding
+                activate DB
+                deactivate DB
+
+            deactivate REPO
+        SRV -> MAPPER : iFloorDTO[] = toDTO(floors[])
+        activate MAPPER
+          loop (while data available)
+               MAPPER -> ENTITY : floorDescription = getFloorDescription()
+                              activate ENTITY
+                              deactivate ENTITY
+                          MAPPER -> ENTITY : floorMap = getFloorMap()
+                              activate ENTITY
+                              deactivate ENTITY
+                       MAPPER -> ENTITY : floorMaxDimensions = getFloorMaxDimensions()
+                              activate ENTITY
+                              deactivate ENTITY
+                          MAPPER -> ENTITY : floorNumber = getFloorNumber()
+                              activate ENTITY
+                              deactivate ENTITY
+          end loop
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

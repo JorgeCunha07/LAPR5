@@ -1,0 +1,7 @@
+@startuml
+skinparam actorStyle awesome
+:FleetManager: --> (Use)
+
+"List all robots in the fleet" as (Use)
+
+@enduml

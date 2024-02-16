@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor CampusManager
+CampusManager -> SPA : selects option to create elevator
+activate SPA
+CampusManager <- SPA : Displays the form to get the elevators parameters
+deactivate SPA
+CampusManager -> SPA : Sends parameters
+activate SPA
+SPA -> MGC: "api/elevators" -> POST
+activate MGC
+
+MGC -> MGC: Handles the body request and creates elevator
+activate MGC
+deactivate MGC
+SPA <- MGC: Response status and Json
+CampusManager <- SPA: Shows the response status and Json
+
+
+
+
+
+@enduml

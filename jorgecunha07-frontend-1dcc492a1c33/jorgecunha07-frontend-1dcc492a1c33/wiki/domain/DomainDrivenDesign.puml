@@ -1,0 +1,278 @@
+@startuml
+
+top to bottom direction
+
+skinparam class {
+    BackgroundColor LightYellow
+    ArrowColor Black
+    BorderColor Black
+}
+
+package "<Aggregate> Building" #0CBC11{
+    entity Building <<root>> {}
+    class BuildingCode <<value object>> {
+        -code
+    }
+    class BuildingName <<value object>> {
+        -name
+    }
+    class BuildingSize <<value object>> {
+        -width
+        -length
+    }
+    class BuildingDescription <<value object>> {
+        - description
+    }
+}
+
+package "<Aggregate> Floor" #A97EE8{
+    entity Floor <<root>> {
+    }
+    entity FloorCode <<value object>> {
+        }
+    entity FloorNumber <<value object>> {
+    }
+    class floorMap <<Entity>> {
+        -file
+    }
+    entity FloorDescription <<value object>> {
+    }
+
+
+
+    entity MaxDimensions <<value object>> {
+    -width
+    -length
+    }
+}
+Floor "1" <-- "1" FloorNumber
+Floor "1" <-- "1" FloorDescription
+
+package "<Aggregate> Room" #A97EE8{
+    entity Room <<root>> {
+    -number
+        }
+    entity RoomId <<value object>> {
+        }
+    entity RoomType <<Enum>> {
+        }
+    class Description <<value object>> {
+            -description
+    }
+
+}
+
+Room "1" <-- "1" RoomId
+Room "1" <-- "1" RoomType
+Room "1" <-- "1" Description
+
+
+package "<Aggregate> Passageway" #F87A04{
+    entity PassagewayId <<value object>>
+    class Passageway <<root>>
+    class LocationPassageway <<value object>>
+}
+Passageway <-- LocationPassageway
+
+package "<Aggregate> Elevator" #BC25BC{
+    entity Elevator <<root>>
+    class ElevatorId <<value object>>
+    class LocationElevator <<value object>>
+}
+
+Elevator <-- ElevatorId
+Elevator <-- LocationElevator
+
+Passageway <-- PassagewayId
+
+Elevator "1" --> "1" BuildingCode
+
+Floor "1" <-- "1" FloorCode
+
+package "<Aggregate> Robot" #FFD222{
+    entity Robot <<root>> {}
+    class Designation <<value object>>
+    class RobotState <<value object>>
+    class SerialNumber <<value object>>
+    class Nickname <<value object>>
+    class RobotCode <<value object>>
+    class RobotBrand <<value object>>
+}
+
+package "<Aggregate> RobotType" #BABEBB{
+    entity RobotType <<root>>
+    entity DescriptionRobotType <<value object>>
+}
+
+RobotType "1" <-- "1" DescriptionRobotType
+
+
+RobotCode "1" --> "1" Robot
+
+Nickname "1" --> "1" Robot
+
+RobotBrand "1" --> "1..*" Robot
+
+package "<Aggregate> Task" #EE7 {
+    entity Task <<root>> {}
+    class TaskId <<value object>>
+    class TaskState <<value object>>
+    class TaskDescription <<value object>>
+
+}
+Task "1" <-- "1" TaskId
+
+
+
+package "<Aggregate> TypeTask" #BADDDD{
+    Interface TypeTask <<root>>
+    class TypeTaskId <<value object>>
+}
+TypeTask "1" <-- "1" TypeTaskId
+RobotType "1.." --- "1.." TypeTask: has >
+
+package "<Aggregate> Transport_Task" #BADDDD{
+    class Transport_Task <<root>>
+
+    class Pickup_Room <<value object>>
+    class Delivery_Room <<value object>>
+    class Contact_Start <<value object>>
+    class Contact_End <<value object>>
+    class Confirmation_Code <<value object>>
+    class Transport_Task_Description <<value object>>
+
+}
+Transport_Task "1" <-- "1" Pickup_Room
+Transport_Task "1" <-- "1" Delivery_Room
+Transport_Task "1" <-- "1" Contact_Start
+Transport_Task "1" <-- "1" Contact_End
+Transport_Task "1" <-- "1" Confirmation_Code
+Transport_Task "1" <-- "1" Transport_Task_Description
+TypeTask "1" <-- "1" Transport_Task : implements
+
+package "<Aggregate> Surveillance_Task" #BADDDD{
+    class Surveillance_Task <<root>>
+
+    class Target_Building <<value object>>
+    class Target_Floor <<value object>>
+    class Contact_Info <<value object>>
+
+
+}
+Surveillance_Task "1" <-- "1" Target_Building
+Surveillance_Task "1" <-- "1" Target_Floor
+Surveillance_Task "1" <-- "1" Contact_Info
+TypeTask "1" <-- "1" Surveillance_Task : implements
+
+package "<Aggregate> Surveillance_Task" #BADDDD{
+    class Surveillance_Task <<root>>
+
+
+}
+
+
+
+
+package "<Aggregate> User" #d2fac0 {
+     entity User <<root>> {}
+
+     entity UserId <<value object>> {}
+
+     entity email <<value object>> {}
+
+     entity name <<value object>> {}
+
+     entity role <<value object>> {}
+}
+
+User <-- UserId
+User <-- email
+User <-- name
+User "1"<-- "1..*" role
+User "1" --- "1..*" Robot: configures >
+User "1.." --- "1.." TypeTask: manages >
+User "1" --- "1..*" Building: manages >
+User "1" --- "1..*" Task: aproves,requests >
+
+Elevator "1" -- "1..*" FloorCode : connects >
+
+MaxDimensions "1" -- "1" Floor : has <
+
+
+
+BuildingCode "1" <-u- "1..*" Floor: inside
+Building <-d- BuildingCode
+Building <-l- BuildingName
+Building <-r- BuildingSize
+Building <-- BuildingDescription
+
+
+
+
+Robot "1.." -l- "1.." Task: carries out >
+Robot "1..*" --- "1" RobotType: has >
+Robot "1"<-- "1"  Designation
+Robot "1"<-- "1"  RobotState
+Robot "1"<-- "1" SerialNumber
+
+
+Floor "1" --> "0..*" RoomId: has
+
+Floor <- floorMap
+
+
+
+
+
+
+Task <-- TaskDescription
+Task "1" -- "1" TypeTask : has >
+TaskState -> Task
+Task "1" ---- "1" Floor : is delivered in a >
+
+Passageway "1" -d-> "2" FloorCode: allows access >
+
+
+
+
+hide TaskDescription circle
+hide Designation circle
+hide BuildingCode circle
+hide BuildingName circle
+hide BuildingSize circle
+hide RobotState circle
+hide Description circle
+hide TaskState circle
+hide Description circle
+hide BuildingDescription circle
+hide UserId circle
+hide TaskId circle
+hide email circle
+hide name circle
+hide SerialNumber circle
+hide role circle
+hide FloorCode circle
+hide ElevatorId circle
+hide PassagewayId circle
+hide Nickname circle
+hide RobotCode circle
+hide RobotBrand circle
+hide MaxDimensions circle
+hide TypeTaskId circle
+hide Delivery_Room circle
+hide Contact_Start circle
+hide Contact_End circle
+hide Confirmation_Code circle
+hide Transport_Task_Description circle
+hide Target_Building circle
+hide Target_Floor circle
+hide Contact_Info circle
+hide Pickup_Room circle
+hide RoomId circle
+hide RoomType circle
+hide DescriptionRobotType circle
+hide FloorNumber circle
+hide FloorDescription circle
+hide LocationPassageway circle
+hide LocationElevator circle
+@enduml

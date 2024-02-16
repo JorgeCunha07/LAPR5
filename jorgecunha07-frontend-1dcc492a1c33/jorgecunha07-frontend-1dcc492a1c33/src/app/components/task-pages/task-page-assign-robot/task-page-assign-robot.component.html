@@ -1,0 +1,42 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Assign Robot to Task</h2>
+
+    <!-- Dropdown for submitted tasks -->
+    <div>
+      <label for="taskDropdown">Select Task:</label>
+      <select id="taskDropdown" name="task" [(ngModel)]="selectedTask" (change)="onTaskSelect()" [disabled]="submittedTasks.length === 0">
+        <option *ngFor="let task of submittedTasks" [value]="task.name">{{ task.name }}</option>
+        <option *ngIf="submittedTasks.length === 0" disabled>No tasks available</option>
+      </select>
+      <div *ngIf="submittedTasks.length === 0" class="alert alert-info">
+        No tasks were found.
+      </div>
+    </div>
+
+    <!-- Display task type indication when a task is selected -->
+    <div *ngIf="selectedTask" class="task-type-indicator">
+      <p><span class="task-type">{{ getTaskType(selectedTask) }}</span></p>
+    </div>
+
+    <!-- Dropdown for available robots (visible only if a task is selected) -->
+    <div *ngIf="selectedTask">
+      <label for="robotDropdown">Select Robot:</label>
+      <select id="robotDropdown" name="robot" [(ngModel)]="selectedRobot">
+        <option *ngFor="let robot of enabledRobots" [value]="robot.robotCode">{{ robot.robotCode }}</option>
+      </select>
+    </div>
+
+    <button class="btn-assign" (click)="assignRobotToTask()">Assign</button>
+
+    <!-- Success and Error Messages -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <button class="btn-back" (click)="goBack()">Go Back</button>
+  </div>
+</div>

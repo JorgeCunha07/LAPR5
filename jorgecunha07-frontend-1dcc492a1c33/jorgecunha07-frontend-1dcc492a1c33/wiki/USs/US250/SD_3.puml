@@ -1,0 +1,87 @@
+@startuml
+
+boundary X
+participant ":Passageway" as ROUTE
+participant "PassagewayController\n<<Controller>>" as CTRL
+participant "PassagewayMapper\n<<Json2DTO>>" as MAPPER
+participant "PassagewayDTO\n<<DTO>>" as DTO
+participant "PassagewayService\n<<Service>>" as SRV
+participant "Passageway\n<<Entity>>" as ENTITY
+participant "FloorRepo\n:IBuildingRepo<<Repository>>" as REPO
+participant "FloorMap\n<<Domain2Data>>" as MAPPER2
+participant "DataPassageway<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : PUT /passsageway/(json)
+activate ROUTE
+ROUTE -> CTRL : updatePassageway(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO** : create(json)
+        deactivate MAPPER
+    CTRL -> SRV : PassagewayDTO = updatePassageway(passagewayDTO)
+        activate SRV
+        SRV -> ENTITY** : passageway = create(passagewayDTO)
+        SRV -> REPO : updatePassageway(passageway)
+            activate REPO
+            REPO -> MAPPER2 : dataPassageway = toData(passageway))
+                activate MAPPER2
+                MAPPER2 -> ENTITY : getBuildingCodeA()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getBuildingCodeB()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getFloorCodeA()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getFloorCodeB()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getLocationA()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getLocationB()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> DATA** : dataPassageway = update(buildingACode,buildingBCode,floorCodeA,floorCodeB, locationA, locationB)
+                deactivate MAPPER2
+            REPO -> DB : save(dataPassageway)
+                activate DB
+                deactivate DB
+            deactivate REPO
+        SRV -> MAPPER : toDTO(passageway))
+            activate MAPPER
+            MAPPER -> ENTITY : buildingACode = getBuildingCodeA()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : buildingBCode = getBuildingCodeB()
+                activate ENTITY
+                deactivate ENTITY
+         MAPPER -> ENTITY : floorCodeA = getFloorCodeA()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : floorCodeB = getFloorCodeB()
+                activate ENTITY
+                deactivate ENTITY
+            MAPPER -> ENTITY : locationA = getLocationA()
+                            activate ENTITY
+                            deactivate ENTITY
+            MAPPER -> ENTITY : locationB = getLocationB()
+                                        activate ENTITY
+                                        deactivate ENTITY
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

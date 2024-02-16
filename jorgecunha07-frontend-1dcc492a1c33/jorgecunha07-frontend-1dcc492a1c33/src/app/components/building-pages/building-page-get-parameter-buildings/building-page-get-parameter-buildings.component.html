@@ -1,0 +1,22 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Search Buildings by Floor Range</h2>
+    <div class="form-group">
+      <input type="number" placeholder="Min Floors" [(ngModel)]="minFloors" class="form-control">
+      <input type="number" placeholder="Max Floors" [(ngModel)]="maxFloors" class="form-control">
+      <button (click)="getBuildingsWithParameters()" class="btn btn-primary">Search</button>
+    </div>
+    <div *ngIf="results.length > 0" class="results-container">
+      <div *ngFor="let building of results" class="building-card">
+        <h3>{{ building.buildingName }}</h3>
+        <p><strong>Floors:</strong> {{ building.floorsNumber }}</p>
+        <p><strong>Description:</strong> {{ building.buildingDescription }}</p>
+        <p><strong>Dimensions:</strong> Width: {{ building.buildingSize.width }}m, Length: {{ building.buildingSize.length }}m</p>
+      </div>
+    </div>
+    <div *ngIf="results.length === 0" class="no-results">
+      No buildings found.
+    </div>
+    <button type="button" class="btn-back" (click)="goBack()">Back</button>
+  </div>
+</div>

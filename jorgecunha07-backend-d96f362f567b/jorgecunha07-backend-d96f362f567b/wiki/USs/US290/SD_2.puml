@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+CampusManagerUI -> MDI: "api//buildingFinderId=:param1" -> Get
+activate MDI
+MDI -> MDI: Handles the request,\n gets all elevators in a building
+CampusManagerUI <- MDI: Response status and Json
+participant  Planning
+
+
+
+
+@enduml

@@ -1,0 +1,80 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('/assets/wallpaper.jpeg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin: 15px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  color: #666;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* To make sure that padding does not affect the overall width */
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #4cae4c;
+  }
+}
+
+.alert {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  &-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+  }
+  &-danger {
+    background-color: #f2dede;
+    color: #a94442;
+  }
+}
+
+.form-actions {
+  text-align: right;
+}

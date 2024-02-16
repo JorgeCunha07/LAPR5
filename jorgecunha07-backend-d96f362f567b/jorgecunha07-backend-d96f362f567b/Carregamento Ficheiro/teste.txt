@@ -1,0 +1,19 @@
+{
+  "floorMatrix": [
+    ["R", "R", "R"],
+    ["R", "O", "R"],
+    ["R", "R", "R"]
+  ],
+  "exits": [
+    [1, 1],
+    [1, 2]
+  ],
+  "elevators": [
+    [1, 1]
+  ],
+  "exitLocation": [2, 0],
+  "ground": "G",
+  "wall": "W",
+  "playerInitialPosition": [1, 0],
+  "playerInitialDirection": 90
+}

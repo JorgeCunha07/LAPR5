@@ -1,0 +1,33 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Create New Building</h2>
+    <form (ngSubmit)="createBuilding()">
+      <div class="form-group">
+        <label for="buildingCode">Building Code:</label>
+        <input type="text" id="buildingCode" [(ngModel)]="building.buildingCode" name="buildingCode" required>
+      </div>
+      <div class="form-group">
+        <label for="buildingName">Building Name:</label>
+        <input type="text" id="buildingName" [(ngModel)]="building.buildingName" name="buildingName" required>
+      </div>
+      <div class="form-group">
+        <label for="buildingDescription">Description:</label>
+        <input type="text" id="buildingDescription" [(ngModel)]="building.buildingDescription" name="buildingDescription" required>
+      </div>
+      <div class="form-group">
+        <label for="width">Width:</label>
+        <input type="number" id="width" [(ngModel)]="building.buildingSize.width" name="width" required>
+      </div>
+      <div class="form-group">
+        <label for="length">Length:</label>
+        <input type="number" id="length" [(ngModel)]="building.buildingSize.length" name="length" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Create Building</button>
+        <button type="button" class="btn-back" (click)="goBack()">Back</button>
+      </div>
+    </form>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  </div>
+</div>

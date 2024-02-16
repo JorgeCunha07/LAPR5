@@ -1,0 +1,88 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Select a Module</h2>
+    <div class="modules-container">
+      <!-- Only show these modules if the role is 'Admin' -->
+      <ng-container *ngIf="infoUser?.role === 'Admin'">
+        <div class="module-card" (click)="navigateTo(module1Path)">
+          <h3>Campus Management</h3>
+          <p>Configuration of the Existent Campus.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module2Path)">
+          <h3>Fleet Management</h3>
+          <p>Responsible for managing robot and drone data, as well as types of tasks they can perform.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module3Path)">
+          <h3>Planning of Tasks</h3>
+          <p>Schedule of the planning Tasks.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module4Path)">
+          <h3>Visualization 3D</h3>
+          <p> Module of the system that allows users to explore the campus in three dimensions,navigating between floors and buildings either manually or according to the routes determined by the planning module.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module5Path)">
+          <h3>Admin Information</h3>
+          <p> Admin Information</p>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="infoUser?.role === 'Campus_Manager'">
+        <div class="module-card" (click)="navigateTo(module1Path)">
+          <h3>Campus Management</h3>
+          <p>Configuration of the Existent Campus.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module2Path)">
+          <h3>Fleet Management</h3>
+          <p>Responsible for managing robot and drone data, as well as types of tasks they can perform.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module3Path)">
+          <h3>Planning of Tasks</h3>
+          <p>Schedule of the planning Tasks.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module4Path)">
+          <h3>Visualization 3D</h3>
+          <p> Module of the system that allows users to explore the campus in three dimensions,navigating between floors and buildings either manually or according to the routes determined by the planning module.</p>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="infoUser?.role === 'Task_Manager'">
+        <div class="module-card" (click)="navigateTo(module2Path)">
+          <h3>Fleet Management</h3>
+          <p>Responsible for managing robot and drone data, as well as types of tasks they can perform.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module3Path)">
+          <h3>Planning of Tasks</h3>
+          <p>Schedule of the planning Tasks.</p>
+        </div>
+        <div class="module-card" (click)="navigateTo(module4Path)">
+          <h3>Visualization 3D</h3>
+          <p> Module of the system that allows users to explore the campus in three dimensions,navigating between floors and buildings either manually or according to the routes determined by the planning module.</p>
+        </div>
+      </ng-container>
+
+
+      <ng-container *ngIf="infoUser?.role === 'Utente'">
+        <div class="module-card" (click)="navigateTo(module3Path)">
+          <h3>Planning of Tasks</h3>
+          <p>Schedule of the planning Tasks.</p>
+        </div>
+      </ng-container>
+
+
+
+
+      <!-- These modules are shown for all users -->
+      <div class="module-card" (click)="navigateTo(module6Path)">
+        <h3>Information</h3>
+        <p> Information about our Company.</p>
+      </div>
+      <div class="module-card" (click)="navigateTo(module7Path)">
+        <h3>Personal Information</h3>
+        <p> User Personal Information.</p>
+      </div>
+      <div class="module-card" (click)="signOut()">
+        <h3>Sign Out</h3>
+      </div>
+    </div>
+  </div>
+</div>

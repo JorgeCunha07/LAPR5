@@ -1,0 +1,34 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Requested Tasks</h2>
+    <div *ngIf="listTasks.length === 0">No tasks available.</div>
+    <div *ngFor="let task of listTasks">
+      <div class="task-box">
+        <h3>Task Name: {{ task.name }}</h3>
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p><strong>Task Type:</strong> {{ task.taskType }}</p>
+        <p><strong>Status:</strong> {{ task.taskStatus }}</p>
+        <p><strong>User:</strong> {{ task.user }}</p>
+        <ng-container *ngIf="task.robotId">
+          <p><strong>Robot ID:</strong> {{ task.robotId }}</p>
+          <p><strong>Robot Type:</strong> {{ task.robotType }}</p>
+        </ng-container>
+
+        <p *ngIf="!task.robotId"><strong>No robot assigned</strong></p>
+        <div class="buttons">
+          <button class="btn-approve" (click)="approveTask(task.name)">Approve</button>
+          <button class="btn-reject" (click)="rejectTask(task.name)">Reject</button>
+        </div>
+      </div>
+    </div>
+    <!-- Display success or error messages -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <!-- Go Back button -->
+    <button class="btn-back" (click)="goBack()">Go Back</button>
+  </div>
+</div>

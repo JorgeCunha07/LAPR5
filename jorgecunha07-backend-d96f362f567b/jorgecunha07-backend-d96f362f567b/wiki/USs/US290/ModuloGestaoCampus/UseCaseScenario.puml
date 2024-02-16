@@ -1,0 +1,7 @@
+@startuml
+skinparam actorStyle awesome
+:CampusManager: --> (Use)
+
+"Listar Elevadores Edificio" as (Use)
+
+@enduml

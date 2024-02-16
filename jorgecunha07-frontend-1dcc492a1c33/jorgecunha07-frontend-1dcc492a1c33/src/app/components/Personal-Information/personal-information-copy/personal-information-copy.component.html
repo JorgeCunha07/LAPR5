@@ -1,0 +1,44 @@
+<div class="page-container">
+  <div class="card">
+    <h2>User Personal Information</h2>
+
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" [(ngModel)]="personalInfo.firstName" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" [(ngModel)]="personalInfo.lastName" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" [(ngModel)]="personalInfo.email" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Role</label>
+      <input type="text" [(ngModel)]="personalInfo.role" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>NIF</label>
+      <input type="text" [(ngModel)]="personalInfo.userNif" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>User Number</label>
+      <input type="text" [(ngModel)]="personalInfo.userNumber" readonly>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-submit" (click)="downloadPersonalInfoAsJson()">Download Info</button>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-submit" (click)="goBack()">Go Back</button>
+    </div>
+
+  </div>
+</div>

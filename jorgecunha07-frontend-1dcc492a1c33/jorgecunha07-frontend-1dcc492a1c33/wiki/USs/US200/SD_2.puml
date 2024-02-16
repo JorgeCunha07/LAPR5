@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+CampusManagerUI -> MDI: "api/passageway" -> Put
+activate MDI
+MDI -> MDI: Handles the body request,updates \n and saves the floor
+CampusManagerUI <- MDI: Response status and Json
+participant  Planning
+
+@enduml

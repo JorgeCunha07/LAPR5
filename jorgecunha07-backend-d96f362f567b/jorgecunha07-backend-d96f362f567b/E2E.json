@@ -1,0 +1,3474 @@
+{
+	"info": {
+		"_postman_id": "0b530f7f-97a3-46bf-b809-99a8d2d213d3",
+		"name": "LAPR5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30234530",
+		"_collection_link": "https://solar-flare-555624.postman.co/workspace/LAPR~06d14204-b768-4a1a-a3cd-2e9230d5b2af/collection/30234530-0b530f7f-97a3-46bf-b809-99a8d2d213d3?action=share&source=collection_link&creator=30234530"
+	},
+	"item": [
+		{
+			"name": "GestaoDeCampus",
+			"item": [
+				{
+					"name": "Task",
+					"item": [
+						{
+							"name": "Surveillance task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that buildingSize object is present in the response\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize).to.exist.and.to.be.an('object');",
+											"});",
+											"",
+											"pm.test(\"Verify that buildingSize object contains the expected fields - width and length\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.buildingSize).to.have.property('width');",
+											"    pm.expect(responseData.buildingSize).to.have.property('length');",
+											"});",
+											"",
+											"pm.test(\"Width and length values are non-negative integers\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize.width).to.be.a('number').and.to.be.at.least(0);",
+											"    pm.expect(responseData.buildingSize.length).to.be.a('number').and.to.be.at.least(0);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate buildingCode is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.buildingCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NmNiNzg1LTk2MGQtNDNhZC05ZjM3LWI1OThjMjU4OWY1MSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiNWQ2MmI0NjQtNzRiYi00Nzg5LWEzYzAtMTU2MTBmYTE0MDQ3IiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5Mzg1MC44NDcsImlhdCI6MTY5ODYwOTg1MH0.--Dv1_RDQF-jRSWJWM9LM6CyUZQt_A-egd-Zpjqvea4"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"taskState\": \"Exemplo de Estado da Tarefa\",\n  \"description\": \"Exemplo de Descrição da Tarefa\",\n  \"targetBuilding\": \"A\",\n  \"targetFloor\": \"1\",\n  \"contactInfo\": \"Exemplo de Informações de Contato\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/task/surveillance-task"
+							},
+							"response": []
+						},
+						{
+							"name": "Transport Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that buildingSize object is present in the response\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize).to.exist.and.to.be.an('object');",
+											"});",
+											"",
+											"pm.test(\"Verify that buildingSize object contains the expected fields - width and length\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.buildingSize).to.have.property('width');",
+											"    pm.expect(responseData.buildingSize).to.have.property('length');",
+											"});",
+											"",
+											"pm.test(\"Width and length values are non-negative integers\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize.width).to.be.a('number').and.to.be.at.least(0);",
+											"    pm.expect(responseData.buildingSize.length).to.be.a('number').and.to.be.at.least(0);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate buildingCode is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.buildingCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NmNiNzg1LTk2MGQtNDNhZC05ZjM3LWI1OThjMjU4OWY1MSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiNWQ2MmI0NjQtNzRiYi00Nzg5LWEzYzAtMTU2MTBmYTE0MDQ3IiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5Mzg1MC44NDcsImlhdCI6MTY5ODYwOTg1MH0.--Dv1_RDQF-jRSWJWM9LM6CyUZQt_A-egd-Zpjqvea4"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"taskState\": \"exampleTaskState\",\n  \"description\": \"exampleDescription\",\n  \"pickupRoom\": \"examplePickupRoom\",\n  \"deliveryRoom\": \"exampleDeliveryRoom\",\n  \"contactStart\": \"exampleContactStart\",\n  \"contactEnd\": \"exampleContactStart\",\n  \"confirmationCode\": \"exampleConfirmationCode\",\n  \"transportTaskDescription\": \"exampleTransportTaskDescription\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/task/transport-task"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Room",
+					"item": [
+						{
+							"name": "Room Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist;",
+											"    pm.expect(responseData.name).to.exist;",
+											"    pm.expect(responseData.type).to.exist;",
+											"    pm.expect(responseData.description).to.exist;",
+											"    pm.expect(responseData.buildingFinderId).to.exist;",
+											"    pm.expect(responseData.floorNumber).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Id is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.id).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Floor number is a non-negative integer\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.floorNumber).to.be.a('number');",
+											"    pm.expect(responseData.floorNumber).to.be.at.least(0);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Name is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmNjODI0LWE1MzQtNDg4ZS04YjA2LWNmYWNjNmViYmY4ZiIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiI1ZDYyYjQ2NC03NGJiLTQ3ODktYTNjMC0xNTYxMGZhMTQwNDciLCJmaXJzdE5hbWUiOiJKb3JnZSIsImxhc3ROYW1lIjoiQ3VuaGEiLCJleHAiOjE3MDQ0MDgzNjAuOTc5LCJpYXQiOjE2OTkyMjQzNjB9.vJlCVA_QXu1L3GrcfRAldLO0WaAQUO4CkYkBBDXayqc"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"F103\",\n  \"type\": \"anfiteatro\",\n  \"description\": \"This is an example description for the room\",\n  \"buildingFinderId\": \"F\",\n  \"floorNumber\": 0,\n  \"location\": {\n    \"x\": 0,\n    \"y\": 0\n  }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/rooms"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Passageway",
+					"item": [
+						{
+							"name": "Passageway Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required fields\", function () {",
+											"  const responseData = pm.response.json();",
+											"",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData).to.have.property('buildingACode');",
+											"  pm.expect(responseData).to.have.property('buildingBCode');",
+											"  pm.expect(responseData).to.have.property('floorA');",
+											"  pm.expect(responseData).to.have.property('floorB');",
+											"  pm.expect(responseData).to.have.property('locationA');",
+											"  pm.expect(responseData).to.have.property('locationB');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Building codes are non-empty strings\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.buildingACode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"  pm.expect(responseData.buildingBCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Floors are non-negative integers\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorA).to.be.a('number').and.to.be.at.least(0);",
+											"    pm.expect(responseData.floorB).to.be.a('number').and.to.be.at.least(0);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjMDRkZjFmLTViZWEtNGRjMS1hZjYzLWRmZjIzMDRhMmY2NyIsImVtYWlsIjoiY3VuaGE3N0BtZS5jb20iLCJyb2xlIjoiQWRtaW4iLCJmaXJzdE5hbWUiOiJKb3JnZSIsImxhc3ROYW1lIjoiQ3VuaGEiLCJleHAiOjE3MDc2NTU4MzQuOTEzLCJpYXQiOjE3MDI0NzE4MzR9.uX7gqFH-fzYu3VvN2wEp-iFmgyYPdSm7qQ8ZpBOSoSo"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"buildingACode\": \"A\",\n    \"buildingBCode\": \"F\",\n    \"floorA\": -1,\n    \"floorB\": 145,\n    \"locationA\": {\n        \"x\": 0,\n        \"y\": 1\n    },\n    \"locationB\": {\n        \"x\": 0,\n        \"y\": 1\n    }\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/passageway"
+							},
+							"response": []
+						},
+						{
+							"name": "Get passageways between Buildings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate that the response is an array\", function () {",
+											"    pm.expect(pm.response.json()).to.be.an('array');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that the array contains at least one element\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Building A code is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData[0].buildingACode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Building B code is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    responseData.forEach(function(item) {",
+											"        pm.expect(item.buildingBCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Building B code should not be empty\");",
+											"    });",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:4000/api/passageway/buildingCodeA=A&buildingCodeB=F"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Floors From Building With Passageway",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response is an array with at least one element\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that locationA.x is a number\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    responseData.forEach(function (data) {",
+											"        pm.expect(data.locationA.x).to.be.a('number');",
+											"    });",
+											"});",
+											"",
+											"pm.test(\"Verify that locationA.y is a number\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    responseData.forEach(function (data) {",
+											"        pm.expect(data.locationA.y).to.be.a('number');",
+											"    });",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:4000/api/passageway/floors/A"
+							},
+							"response": []
+						},
+						{
+							"name": "Passageway Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.property('buildingACode');",
+											"    pm.expect(responseData).to.have.property('buildingBCode');",
+											"    pm.expect(responseData).to.have.property('floorA');",
+											"    pm.expect(responseData).to.have.property('floorB');",
+											"    pm.expect(responseData).to.have.property('locationA');",
+											"    pm.expect(responseData).to.have.property('locationB');",
+											"});",
+											"",
+											"",
+											"pm.test(\"buildingACode and buildingBCode are non-empty strings\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.buildingACode).to.be.a('string').and.to.not.be.empty;",
+											"    pm.expect(responseData.buildingBCode).to.be.a('string').and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate that the values of floorA and floorB are non-negative integers\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorA).to.be.a('number').and.to.satisfy((value) => value >= 0, \"Value should be a non-negative integer\");",
+											"    pm.expect(responseData.floorB).to.be.a('number').and.to.satisfy((value) => value >= 0, \"Value should be a non-negative integer\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"buildingACode\": \"A\",\n    \"buildingBCode\": \"F\",\n    \"floorA\": \"1\",\n    \"floorB\": \"2\",\n    \"locationA\": {\n        \"x\": 3,\n        \"y\": 1\n    },\n    \"locationB\": {\n        \"x\": 1,\n        \"y\": 1\n    }\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/passageway"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Elevator",
+					"item": [
+						{
+							"name": "Elevators Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist;",
+											"    pm.expect(responseData.buildingFinderId).to.exist;",
+											"    pm.expect(responseData.floors).to.exist;",
+											"    pm.expect(responseData.location).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that the 'floors' array is present and contains at least one element\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floors).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate id and buildingFinderId are non-empty strings\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"id should not be empty\");",
+											"    pm.expect(responseData.buildingFinderId).to.be.a('string').and.to.have.lengthOf.at.least(1, \"buildingFinderId should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that the 'location' object is present in the response and contains the expected fields - x and y\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.location).to.exist.and.to.be.an('object');",
+											"    pm.expect(responseData.location).to.have.property('x');",
+											"    pm.expect(responseData.location).to.have.property('y');",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"buildingFinderId\": \"F\",\n  \"floors\": [\n    \"0\",\n    \"2\",\n    \"3\"\n  ],\n    \"location\": {\n    \"x\": 0,\n    \"y\": 0\n  }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/elevators"
+							},
+							"response": []
+						},
+						{
+							"name": "Elevator Find",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate that the response is an array with at least one element\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Each element in the response array has the required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+											"",
+											"    responseData.forEach(function(element) {",
+											"        pm.expect(element).to.have.property('id');",
+											"        pm.expect(element).to.have.property('buildingFinderId');",
+											"        pm.expect(element).to.have.property('floors');",
+											"        pm.expect(element).to.have.property('location');",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Floors array should not be empty\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    pm.expect(responseData[0].floors).to.be.an('array').and.to.have.lengthOf.at.least(1, \"Floors array should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Location has the required fields - x and y\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    ",
+											"    responseData.forEach(function (item) {",
+											"        pm.expect(item.location).to.exist.and.to.be.an('object');",
+											"        pm.expect(item.location.x).to.exist.and.to.be.a('number');",
+											"        pm.expect(item.location.y).to.exist.and.to.be.a('number');",
+											"    });",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:4000/api/elevators/buildingFinderId=A"
+							},
+							"response": []
+						},
+						{
+							"name": "Elevator Patch",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate the id field is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"The buildingFinderId field is a non-empty string\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.buildingFinderId).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"The floors array is present and contains at least one element\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floors).to.exist.and.to.be.an('array');",
+											"    pm.expect(responseData.floors).to.have.lengthOf.at.least(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"The location object must contain x and y fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.location).to.exist.and.to.be.an('object');",
+											"    pm.expect(responseData.location).to.have.property('x');",
+											"    pm.expect(responseData.location).to.have.property('y');",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"buildingFinderId\": \"A\",\n  \"floors\": [\n      \"0\", \n      \"1\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/elevators"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Robot",
+					"item": [
+						{
+							"name": "Robot Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"robotCode is a non-empty string\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.robotCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"robotSerialNumber is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.robotSerialNumber).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"robotTypeName is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.robotTypeName).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5ZDEyZjE3LWJmZDQtNDMzMS05NWZjLTQ5YjNhMzExNjYxMyIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk4MDg5MywiaWF0IjoxNzAzOTc5NjkzfQ.0u9nvF9jxyPKZ-v_YedD8_rjCPXl3ywzhN_JV8AE4Hg"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"robotCode\": \"vava\",\n  \"robotDescription\": \"Robot\",\n  \"robotNickname\": \"Nicknamfafae\",\n  \"robotSerialNumber\": \"fafafa\",\n  \"robotTypeName\": \"TestRobotType2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/robots"
+							},
+							"response": []
+						},
+						{
+							"name": "Enable Robot",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that the robotCode field is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.robotCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"pm.test(\"Verify that the 'enabled' field is a boolean value\", function() {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.enabled).to.be.a('boolean');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that the 'enabled' field is set to true\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.enabled).to.be.true;",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "http://localhost:4000/api/robots/Robot123/enable"
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Robot",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot is disabled after patch request\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.enabled).to.be.false;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot code is not empty\", function () {",
+											"  const responseData = pm.response.json();",
+											"",
+											"  pm.expect(responseData.robotCode).to.exist.and.to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot description is not empty\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.robotDescription).to.exist.and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot nickname is not empty\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.robotNickname).to.not.be.empty;",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "http://localhost:4000/api/robots/jor3ge/disable"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all robots",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate the response body is an array\", function () {",
+											"  pm.expect(pm.response.json()).to.be.an('array');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot code is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    responseData.forEach(function (robot) {",
+											"        pm.expect(robot.robotCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Robot code should not be empty\");",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot serial number is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    responseData.forEach(function(robot) {",
+											"        pm.expect(robot.robotSerialNumber).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"    });",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"robotCode\": \"YourRobotCode2\",\n  \"robotDescription\": \"YourRobotDescription\",\n  \"robotNickname\": \"YourRobotNickname\",\n  \"robotSerialNumber\": \"YourSerialNumber\",\n  \"robotTypeName\": \"YourRobotTypeName\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/robots"
+							},
+							"response": []
+						},
+						{
+							"name": "Get enabled robots",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate the response body is an array\", function () {",
+											"  pm.expect(pm.response.json()).to.be.an('array');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot code is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    responseData.forEach(function (robot) {",
+											"        pm.expect(robot.robotCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Robot code should not be empty\");",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Robot serial number is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    responseData.forEach(function(robot) {",
+											"        pm.expect(robot.robotSerialNumber).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"    });",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1MzJlYWZmLTFlNzctNDY1Yy1iZjc1LWQyNjZkYmEwZjkxYSIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk4MTEzNSwiaWF0IjoxNzAzOTc5OTM1fQ.zDuXWZNFfAMzStzyjAPFXGGwjo-9p156AAouakEVS6o"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:4000/api/robots/enabled"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "RobotType",
+					"item": [
+						{
+							"name": "RobotTypeCreate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required fields\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.robotTypeName).to.exist;",
+											"  pm.expect(responseData.robotBrand).to.exist;",
+											"  pm.expect(responseData.robotModel).to.exist;",
+											"  pm.expect(responseData.supportedTaskTypes).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"RobotTypeName is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.robotTypeName).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"RobotBrand is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.robotBrand).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"RobotModel is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.robotModel).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5ZDEyZjE3LWJmZDQtNDMzMS05NWZjLTQ5YjNhMzExNjYxMyIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk4MDg5MywiaWF0IjoxNzAzOTc5NjkzfQ.0u9nvF9jxyPKZ-v_YedD8_rjCPXl3ywzhN_JV8AE4Hg"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"robotTypeName\": \"TestRobotType5\",\n    \"robotBrand\": \"TestRobotBrand\",\n    \"robotModel\": \"TestRobotModel5\",\n    \"supportedTaskTypes\": [\"SurveillanceTask\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/robot-types"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Floor",
+					"item": [
+						{
+							"name": "Floors Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"FloorNumber is a non-negative integer\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorNumber).to.be.a('number');",
+											"    pm.expect(responseData.floorNumber).to.be.at.least(0);",
+											"});",
+											"",
+											"",
+											"pm.test(\"FloorMaxDimensions has the required fields - width and length\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorMaxDimensions).to.exist;",
+											"    pm.expect(responseData.floorMaxDimensions).to.have.property(\"width\");",
+											"    pm.expect(responseData.floorMaxDimensions).to.have.property(\"length\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5ZDEyZjE3LWJmZDQtNDMzMS05NWZjLTQ5YjNhMzExNjYxMyIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzU1Njc0MSwiaWF0IjoxNzAzNTU1NTQxfQ.f8p7uaIz4PF3QTEViE1Iav5De4bpsm1KEYJXlmY6dDg"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"buildingFinderId\": \"B\",\n  \"floorNumber\": 2,\n  \"floorDescription\": \"Fifth floor with conference rooms and offices\",\n  \"floorMap\": {\n  \"maze\": {\n    \"size\": { \"width\": 22, \"depth\": 10 },\n    \"map\": [\n      [3,2,2,2,2,2,2,2,2,2,3,2,2,2,3,2,2,2,3,2,3,2,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0,1],\n      [1,0,0,0,0,0,0,0,0,0,3,2,2,2,2,2,2,2,2,2,-2,6,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,3,2,2,2,1,0,0,0,3,2,2,2,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1],\n      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]\n    ],\n    \"exitLocation\": [-1, -1]\n  },\n  \"ground\": {\n    \"size\": { \"width\": 22.0, \"height\": 0.125, \"depth\": 10.0 },\n    \"segments\": { \"width\": 64, \"height\": 1, \"depth\": 64 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/floor.png\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_ao_2k.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_height_2k.png\",\n        \"scale\": 0.125,\n        \"bias\": -0.065\n      },\n      \"normal\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_normal_opengl_2k.png\",\n        \"type\": 0,\n        \"scale\": { \"x\": 1.0, \"y\": 1.0 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_roughness_2k.jpg\",\n        \"rough\": 1.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 1,\n    \"repeat\": { \"u\": 16.0, \"v\": 16.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"wall\": {\n    \"segments\": { \"width\": 16, \"height\": 16 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"passageway\": {\n    \"segments\": { \"width\": 16, \"height\": 16 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_color_2k.jpg\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_color_2k.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_color_2k.jpg\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"elevator\": {\n    \"segments\": { \"width\": 16, \"height\": 16 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/elevator/elevator2.png\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/elevator/elevator2.png\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"door\": {\n    \"segments\": { \"width\": 21, \"height\": 21 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/door/door_original.jpg\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/door/door_original.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"-\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"player\": {\n    \"initialPosition\": [3.0, 3.0],\n    \"initialDirection\": 90.0\n  },\n  \"elevatorFloors\": {\n    \"floors\": [\"A2\"],\n    \"positionWhenLeavingElevator\": [2.0, 21.0]\n  },\n  \"passageways\": [\n    {\n      \"floor\": [\"B1\"],\n      \"location\": [-2.0, 1.0],\n      \"locationOnExit\": [2.0, 21.0]\n    },\n    {\n      \"floor\": [\"C1\"],\n      \"location\": [9.0, -3.0],\n      \"locationOnExit\": [3.0, 5.0]\n    }\n  ]\n},\n  \"floorMaxDimensions\": {\n    \"width\": 5,\n    \"length\": 5\n  }\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/floors"
+							},
+							"response": []
+						},
+						{
+							"name": "Floors Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate that the id is a non-empty string\", function () {",
+											"  const responseData = pm.response.json();",
+											"",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.buildingFinderId).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should not be empty\");",
+											"});",
+											"",
+											"",
+											"",
+											"pm.test(\"Validate floorMaxDimensions has non-negative values for width and length\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.floorMaxDimensions).to.exist.and.to.be.an('object');",
+											"  pm.expect(responseData.floorMaxDimensions.width).to.be.a('number').and.to.be.at.least(0);",
+											"  pm.expect(responseData.floorMaxDimensions.length).to.be.a('number').and.to.be.at.least(0);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"buildingFinderId\": \"B\",\n  \"floorNumber\": 2,\n  \"floorDescription\": \"Arroz Leitoso\",\n  \"floorMap\": {\n    \"maze\": {\n      \"size\": {\n        \"width\": 5,\n        \"depth\": 5\n      },\n      \"map\": [\n        [1, 1, 1, 1, 1],\n        [1, 0, 0, 0, 1],\n        [1, 0, 1, 0, 1],\n        [1, 0, 0, 0, 1],\n        [1, 1, 1, 1, 1]\n      ],\n      \"exitLocation\": [4, 4]\n    },\n    \"ground\": {\n      \"size\": {\n        \"width\": 100,\n        \"height\": 1,\n        \"depth\": 100\n      },\n      \"segments\": {\n        \"width\": 16,\n        \"height\": 1,\n        \"depth\": 16\n      },\n      \"primaryColor\": \"#f0f0f0\",\n      \"maps\": {\n        \"color\": {\n          \"url\": \"textures/ground_color.jpg\",\n          \"intensity\": 1.0\n        },\n        \"ao\": {\n          \"url\": \"textures/ground_ao.jpg\",\n          \"intensity\": 1.0\n        },\n        \"displacement\": {\n          \"url\": \"textures/ground_displacement.png\",\n          \"scale\": 0.5,\n          \"bias\": -0.05\n        },\n        \"normal\": {\n          \"url\": \"textures/ground_normal.png\",\n          \"type\": 0,\n          \"scale\": {\n            \"x\": 1.0,\n            \"y\": 1.0\n          }\n        },\n        \"bump\": {\n          \"url\": \"textures/ground_bump.jpg\",\n          \"scale\": 1.0\n        },\n        \"roughness\": {\n          \"url\": \"textures/ground_roughness.jpg\",\n          \"rough\": 0.8\n        }\n      },\n      \"wrapS\": 1,\n      \"wrapT\": 1,\n      \"repeat\": {\n        \"u\": 5,\n        \"v\": 5\n      },\n      \"magFilter\": 1,\n      \"minFilter\": 5,\n      \"secondaryColor\": \"#cccccc\"\n    },\n    \"wall\": {\n      \"segments\": {\n        \"width\": 16,\n        \"height\": 16\n      },\n      \"primaryColor\": \"#f0f0f0\",\n      \"maps\": {\n        \"color\": {\n          \"url\": \"textures/ground_color.jpg\",\n          \"intensity\": 1.0\n        },\n        \"ao\": {\n          \"url\": \"textures/ground_ao.jpg\",\n          \"intensity\": 1.0\n        },\n        \"displacement\": {\n          \"url\": \"textures/ground_displacement.png\",\n          \"scale\": 0.5,\n          \"bias\": -0.05\n        },\n        \"normal\": {\n          \"url\": \"textures/ground_normal.png\",\n          \"type\": 0,\n          \"scale\": {\n            \"x\": 1.0,\n            \"y\": 1.0\n          }\n        },\n        \"bump\": {\n          \"url\": \"textures/ground_bump.jpg\",\n          \"scale\": 1.0\n        },\n        \"roughness\": {\n          \"url\": \"textures/ground_roughness.jpg\",\n          \"rough\": 0.8\n        }\n      },\n      \"wrapS\": 1,\n      \"wrapT\": 1,\n      \"repeat\": {\n        \"u\": 5,\n        \"v\": 5\n      },\n      \"magFilter\": 1,\n      \"minFilter\": 5,\n      \"secondaryColor\": \"#cccccc\"\n    },\n    \"elevator\": {\n      \"segments\": {\n        \"width\": 16,\n        \"height\": 16\n      },\n      \"primaryColor\": \"#f0f0f0\",\n      \"maps\": {\n        \"color\": {\n          \"url\": \"textures/ground_color.jpg\",\n          \"intensity\": 1.0\n        },\n        \"ao\": {\n          \"url\": \"textures/ground_ao.jpg\",\n          \"intensity\": 1.0\n        },\n        \"displacement\": {\n          \"url\": \"textures/ground_displacement.png\",\n          \"scale\": 0.5,\n          \"bias\": -0.05\n        },\n        \"normal\": {\n          \"url\": \"textures/ground_normal.png\",\n          \"type\": 0,\n          \"scale\": {\n            \"x\": 1.0,\n            \"y\": 1.0\n          }\n        },\n        \"bump\": {\n          \"url\": \"textures/ground_bump.jpg\",\n          \"scale\": 1.0\n        },\n        \"roughness\": {\n          \"url\": \"textures/ground_roughness.jpg\",\n          \"rough\": 0.8\n        }\n      },\n      \"wrapS\": 1,\n      \"wrapT\": 1,\n      \"repeat\": {\n        \"u\": 5,\n        \"v\": 5\n      },\n      \"magFilter\": 1,\n      \"minFilter\": 5,\n      \"secondaryColor\": \"#cccccc\"\n    },\n    \"door\": {\n      \"segments\": {\n        \"width\": 16,\n        \"height\": 16\n      },\n      \"primaryColor\": \"#f0f0f0\",\n      \"maps\": {\n        \"color\": {\n          \"url\": \"textures/ground_color.jpg\",\n          \"intensity\": 1.0\n        },\n        \"ao\": {\n          \"url\": \"textures/ground_ao.jpg\",\n          \"intensity\": 1.0\n        },\n        \"displacement\": {\n          \"url\": \"textures/ground_displacement.png\",\n          \"scale\": 0.5,\n          \"bias\": -0.05\n        },\n        \"normal\": {\n          \"url\": \"textures/ground_normal.png\",\n          \"type\": 0,\n          \"scale\": {\n            \"x\": 1.0,\n            \"y\": 1.0\n          }\n        },\n        \"bump\": {\n          \"url\": \"textures/ground_bump.jpg\",\n          \"scale\": 1.0\n        },\n        \"roughness\": {\n          \"url\": \"textures/ground_roughness.jpg\",\n          \"rough\": 0.8\n        }\n      },\n      \"wrapS\": 1,\n      \"wrapT\": 1,\n      \"repeat\": {\n        \"u\": 5,\n        \"v\": 5\n      },\n      \"magFilter\": 1,\n      \"minFilter\": 5,\n      \"secondaryColor\": \"#cccccc\"\n    },\n    \"player\": {\n      \"initialPosition\": [1, 1],\n      \"initialDirection\": 90\n    }\n  },\n  \"floorMaxDimensions\": {\n    \"width\": 5,\n    \"length\": 5\n  }\n}\n\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/floors"
+							},
+							"response": []
+						},
+						{
+							"name": "FloorsMap Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Floor number is a non-negative integer\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorNumber).to.be.a('number');",
+											"    pm.expect(responseData.floorNumber).to.be.at.least(0, \"Floor number should be non-negative\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Floor map is a 2D array with at least one element\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorMap.maze.map).to.be.an('array').and.to.have.lengthOf.at.least(1, \"Floor map should have at least one element\");",
+											"    responseData.floorMap.maze.map.forEach(function(row) {",
+											"        pm.expect(row).to.be.an('array').and.to.have.lengthOf.at.least(1, \"Each row in the floor map should have at least one element\");",
+											"    });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Floor max dimensions - width and length are non-negative integers\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorMaxDimensions).to.exist.and.to.be.an('object');",
+											"    pm.expect(responseData.floorMaxDimensions.width).to.be.a('number').and.to.be.at.least(0, \"Width should be a non-negative integer\");",
+											"    pm.expect(responseData.floorMaxDimensions.length).to.be.a('number').and.to.be.at.least(0, \"Length should be a non-negative integer\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"maze\": {\n    \"size\": { \"width\": 22, \"depth\": 10 },\n    \"map\": [\n      [3,2,2,2,2,2,2,2,2,2,3,2,2,2,3,2,2,2,3,2,3,2,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0,1],\n      [1,0,0,0,0,0,0,0,0,0,3,2,2,2,2,2,2,2,2,2,-2,6,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],\n      [1,0,0,0,0,0,0,0,0,0,3,2,2,2,1,0,0,0,3,2,2,2,1],\n      [1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1],\n      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]\n    ],\n    \"exitLocation\": [-1, -1]\n  },\n  \"ground\": {\n    \"size\": { \"width\": 22.0, \"height\": 0.125, \"depth\": 10.0 },\n    \"segments\": { \"width\": 64, \"height\": 1, \"depth\": 64 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/floor.png\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_ao_2k.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_height_2k.png\",\n        \"scale\": 0.125,\n        \"bias\": -0.065\n      },\n      \"normal\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_normal_opengl_2k.png\",\n        \"type\": 0,\n        \"scale\": { \"x\": 1.0, \"y\": 1.0 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/ground_0003_2k_372HqZ/ground_0003_roughness_2k.jpg\",\n        \"rough\": 1.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 1,\n    \"repeat\": { \"u\": 16.0, \"v\": 16.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"wall\": {\n    \"segments\": { \"width\": 16, \"height\": 16 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"passageway\": {\n    \"segments\": { \"width\": 16, \"height\": 16 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_color_2k.jpg\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_color_2k.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_color_2k.jpg\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"elevator\": {\n    \"segments\": { \"width\": 16, \"height\": 16 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/elevator/elevator2.png\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/elevator/elevator2.png\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"assets/textures/concrete_0007_2k_xtGY5J/concrete_0007_roughness_2k.jpg\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"door\": {\n    \"segments\": { \"width\": 21, \"height\": 21 },\n    \"primaryColor\": \"0xffffff\",\n    \"maps\": {\n      \"color\": {\n        \"url\": \"assets/textures/door/door_original.jpg\"\n      },\n      \"ao\": {\n        \"url\": \"assets/textures/door/door_original.jpg\",\n        \"intensity\": 1.0\n      },\n      \"displacement\": {\n        \"url\": \"-\",\n        \"scale\": 0.5,\n        \"bias\": -0.35\n      },\n      \"normal\": {\n        \"url\": \"-\",\n        \"type\": 0,\n        \"scale\": { \"x\": 0.5, \"y\": 0.5 }\n      },\n      \"bump\": {\n        \"url\": \"-\",\n        \"scale\": 1.0\n      },\n      \"roughness\": {\n        \"url\": \"-\",\n        \"rough\": 0.0\n      }\n    },\n    \"wrapS\": 1,\n    \"wrapT\": 0,\n    \"repeat\": { \"u\": 2.0, \"v\": 1.0 },\n    \"magFilter\": 1,\n    \"minFilter\": 5,\n    \"secondaryColor\": \"0x683a22\"\n  },\n  \"player\": {\n    \"initialPosition\": [3.0, 3.0],\n    \"initialDirection\": 90.0\n  },\n  \"elevatorFloors\": {\n    \"floors\": [\"A2\"],\n    \"positionWhenLeavingElevator\": [2.0, 21.0]\n  },\n  \"passageways\": [\n    {\n      \"floor\": [\"B1\"],\n      \"location\": [-2.0, 1.0],\n      \"locationOnExit\": [2.0, 21.0]\n    },\n    {\n      \"floor\": [\"C1\"],\n      \"location\": [9.0, -3.0],\n      \"locationOnExit\": [3.0, 5.0]\n    }\n  ]\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/floors/FloorMap/B/15515"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Building",
+					"item": [
+						{
+							"name": "Building Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Verify that buildingSize object is present in the response\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize).to.exist.and.to.be.an('object');",
+											"});",
+											"",
+											"pm.test(\"Verify that buildingSize object contains the expected fields - width and length\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.buildingSize).to.have.property('width');",
+											"    pm.expect(responseData.buildingSize).to.have.property('length');",
+											"});",
+											"",
+											"pm.test(\"Width and length values are non-negative integers\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize).to.be.an('object');",
+											"    pm.expect(responseData.buildingSize.width).to.be.a('number').and.to.be.at.least(0);",
+											"    pm.expect(responseData.buildingSize.length).to.be.a('number').and.to.be.at.least(0);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate buildingCode is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.buildingCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5ZDEyZjE3LWJmZDQtNDMzMS05NWZjLTQ5YjNhMzExNjYxMyIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk4MDQyNSwiaWF0IjoxNzAzOTc5MjI1fQ.zV1HKAlc7m5oWH5ePkmjSOzEs01LvHfhH5ATfHTQdCs"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"buildingCode\": \"BA\",\n  \"buildingName\": \"ISEPBA\",\n  \"buildingDescription\": \"Building BA Engenharia Informatica\",\n  \"buildingSize\": {\n    \"width\": 2,\n    \"length\": 2\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/buildings"
+							},
+							"response": []
+						},
+						{
+							"name": "Building Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Building ID is a non-empty string\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.id).to.exist.and.to.be.a('string').and.to.have.length.above(0, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Building code is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.buildingCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Building code should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Building name is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.buildingName).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Building name should not be empty\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NmNiNzg1LTk2MGQtNDNhZC05ZjM3LWI1OThjMjU4OWY1MSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiNWQ2MmI0NjQtNzRiYi00Nzg5LWEzYzAtMTU2MTBmYTE0MDQ3IiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzk3Mjc3Mi41NjMsImlhdCI6MTY5ODc4ODc3Mn0.OpEiEjBVTUfEE1EDRKFDGyp4AzJNyfI4LCHN5XT47eY"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"buildingCode\": \"B\",\n  \"buildingName\": \"ISEPB\",\n  \"buildingDescription\": \"Building A Engenharia Informatica\",\n  \"buildingSize\": {\n    \"width\": 150,\n    \"length\": 200\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:4000/api/buildings"
+							},
+							"response": []
+						},
+						{
+							"name": "Building Get All",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response body is an array\", function () {",
+											"    pm.expect(pm.response.json()).to.be.an('array');",
+											"});",
+											"",
+											"pm.test(\"Validate buildingCode is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    pm.expect(responseData).to.have.lengthOf.at.least(1, \"Array should not be empty\");",
+											"    ",
+											"    responseData.forEach(function(building) {",
+											"        pm.expect(building.buildingCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"buildingCode should not be empty\");",
+											"    });",
+											"});",
+											"",
+											"pm.test(\"Verify that the buildingSize object has the required fields - width and length\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData).to.be.an('array');",
+											"    responseData.forEach(function (building) {",
+											"        pm.expect(building).to.have.property('buildingSize').that.is.an('object');",
+											"        pm.expect(building.buildingSize).to.have.property('width').that.is.a('number');",
+											"        pm.expect(building.buildingSize).to.have.property('length').that.is.a('number');",
+											"    });",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NmNiNzg1LTk2MGQtNDNhZC05ZjM3LWI1OThjMjU4OWY1MSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiNWQ2MmI0NjQtNzRiYi00Nzg5LWEzYzAtMTU2MTBmYTE0MDQ3IiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzk3Mjc3Mi41NjMsImlhdCI6MTY5ODc4ODc3Mn0.OpEiEjBVTUfEE1EDRKFDGyp4AzJNyfI4LCHN5XT47eY"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:4000/api/buildings/all"
+							},
+							"response": []
+						},
+						{
+							"name": "Building Get Between List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response is an array\", function () {",
+											"  pm.expect(pm.response.json()).to.be.an('array');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Each building has a non-empty building code\", function () {",
+											"  pm.response.json().forEach(function(building) {",
+											"    pm.expect(building.buildingCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"  });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Each building has a building size with width and length properties\", function () {",
+											"  pm.response.json().forEach(function(building) {",
+											"    pm.expect(building.buildingSize).to.exist;",
+											"    pm.expect(building.buildingSize).to.have.property('width');",
+											"    pm.expect(building.buildingSize).to.have.property('length');",
+											"  });",
+											"});",
+											"",
+											"",
+											"pm.test(\"Each building has a non-negative floors number\", function () {",
+											"  pm.response.json().forEach(function(building) {",
+											"    pm.expect(building.floorsNumber).to.be.a('number').and.to.be.at.least(0);",
+											"  });",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:4000/api/buildings/min=0/max=5"
+							},
+							"response": []
+						},
+						{
+							"name": "Building Get Floors",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Each element in the response array has the required properties\", function () {",
+											"    pm.response.json().forEach(function(element) {",
+											"        pm.expect(element).to.have.property('id');",
+											"        pm.expect(element).to.have.property('buildingFinderId');",
+											"        pm.expect(element).to.have.property('floorNumber');",
+											"        pm.expect(element).to.have.property('floorDescription');",
+											"        pm.expect(element).to.have.property('floorMap');",
+											"        pm.expect(element).to.have.property('floorMaxDimensions');",
+											"    });",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:4000/api/floors/buildingFinderId=C"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Planning Server",
+					"item": [
+						{
+							"name": "CreateGrafo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required fields\", function () {",
+											"  const responseData = pm.response.json();",
+											"",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData).to.have.property('buildingACode');",
+											"  pm.expect(responseData).to.have.property('buildingBCode');",
+											"  pm.expect(responseData).to.have.property('floorA');",
+											"  pm.expect(responseData).to.have.property('floorB');",
+											"  pm.expect(responseData).to.have.property('locationA');",
+											"  pm.expect(responseData).to.have.property('locationB');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Building codes are non-empty strings\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData).to.be.an('object');",
+											"  pm.expect(responseData.buildingACode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"  pm.expect(responseData.buildingBCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Floors are non-negative integers\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.floorA).to.be.a('number').and.to.be.at.least(0);",
+											"    pm.expect(responseData.floorB).to.be.a('number').and.to.be.at.least(0);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://10.9.10.76:4000/api/prologue/create?edificio=b&piso=b1&coluna=5&linha=5",
+									"protocol": "http",
+									"host": [
+										"10",
+										"9",
+										"10",
+										"76"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"prologue",
+										"create"
+									],
+									"query": [
+										{
+											"key": "edificio",
+											"value": "b"
+										},
+										{
+											"key": "piso",
+											"value": "b1"
+										},
+										{
+											"key": "coluna",
+											"value": "5"
+										},
+										{
+											"key": "linha",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "aStar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://10.9.10.76:4000/api/prologue/path?inicio=cel(a,a1,1,2)&fim=cel(a,a1,3,3)",
+									"protocol": "http",
+									"host": [
+										"10",
+										"9",
+										"10",
+										"76"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"prologue",
+										"path"
+									],
+									"query": [
+										{
+											"key": "inicio",
+											"value": "cel(a,a1,1,2)"
+										},
+										{
+											"key": "fim",
+											"value": "cel(a,a1,3,3)"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "GestaoDeTarefas",
+			"item": [
+				{
+					"name": "Create Transport Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"ContactStart and contactEnd are in valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.contactStart).to.be.a('string').and.to.match(/[a-zA-Z]+/);\r",
+									"    pm.expect(responseData.contactEnd).to.be.a('string').and.to.match(/[a-zA-Z]+/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"TaskStatus and taskType are within the expected range of values\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.taskStatus).to.be.within(0, 3);\r",
+									"    pm.expect(responseData.taskType).to.be.oneOf([0, 1, 2]);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3ZjA5NzgxLTRkZTItNGQyYS04YTk1LTQ5OTQ0ODZmNjc5ZSIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwNDA3Nzk4MiwiaWF0IjoxNzA0MDcwNzgyfQ.8r-9FxmHrdIpE-DbU8bD_fzGLPE1Impm93o3brsHevI"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Description\": \"adad\",\r\n    \"FromLocation\": {\r\n        \"Building\": \"b\",\r\n        \"Room\": 1,\r\n        \"X\": 1,\r\n        \"Y\": 1\r\n    },\r\n    \"ToLocation\": {\r\n        \"Building\": \"b\",\r\n        \"Room\": 2,\r\n        \"X\": 1,\r\n        \"Y\": 4\r\n    },\r\n    \"ContactStart\": \"+351 911708716\",\r\n    \"ContactEnd\": \"+352  911708716\",\r\n    \"User\": \"JohnDoe@me.com\",\r\n    \"Name\": \"transport\"\r\n}"
+						},
+						"url": "http://localhost:5002/api/TransportTask/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Surveillance Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.expect(pm.response.to.have.status(201));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"User field should not be empty\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  pm.expect(responseData.user).to.exist.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Contact info is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.contactInfo).to.be.a('string').and.to.match(/^[a-zA-Z0-9\\s]+$/);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3ZjA5NzgxLTRkZTItNGQyYS04YTk1LTQ5OTQ0ODZmNjc5ZSIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwNDA3Nzk4MiwiaWF0IjoxNzA0MDcwNzgyfQ.8r-9FxmHrdIpE-DbU8bD_fzGLPE1Impm93o3brsHevI"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Description\": \"Surveillance task description\",\r\n  \"fromLocation\": {\r\n    \"X\": 10,\r\n    \"Y\": 20,\r\n    \"Building\": \"A\",\r\n    \"Room\": \"1\"\r\n  },\r\n  \"toLocation\": {\r\n    \"X\": 10,\r\n    \"Y\": 20,\r\n    \"Building\": \"A\",\r\n    \"Room\": \"1\"\r\n  },\r\n  \"ContactInfo\": \"+123911123123\",\r\n  \"User\": \"John Doe\",\r\n  \"Name\": \"surveillance\"\r\n}\r\n"
+						},
+						"url": "http://localhost:5002/api/SurveillanceTask/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Task status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Building in fromLocation and toLocation is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.fromLocation.building).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"    pm.expect(responseData.toLocation.building).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Room in fromLocation and toLocation is a non-negative integer\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.fromLocation.room).to.be.a('number').and.to.be.at.least(0, \"Room in fromLocation should be a non-negative integer\");\r",
+									"    pm.expect(responseData.toLocation.room).to.be.a('number').and.to.be.at.least(0, \"Room in toLocation should be a non-negative integer\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3ZjA5NzgxLTRkZTItNGQyYS04YTk1LTQ5OTQ0ODZmNjc5ZSIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwNDA3Nzk4MiwiaWF0IjoxNzA0MDcwNzgyfQ.8r-9FxmHrdIpE-DbU8bD_fzGLPE1Impm93o3brsHevI"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:5002/api/Task/transport/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Assign robot to task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3ZjA5NzgxLTRkZTItNGQyYS04YTk1LTQ5OTQ0ODZmNjc5ZSIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwNDA3Nzk4MiwiaWF0IjoxNzA0MDcwNzgyfQ.8r-9FxmHrdIpE-DbU8bD_fzGLPE1Impm93o3brsHevI"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5002/api/Task/transport/robot1/robottype1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transport Task by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiZDQ0MTJiLTA1NjctNDMwNC1iNjM5LWY4YjEwZTQyMDQ1ZCIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk5OTk3MywiaWF0IjoxNzAzOTkyNzczfQ.BCIvzlnA0_3wK7yn4fwvr_j1OwRHP2rz3n49BqGMsS4"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:5002/api/TransportTask/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Surveillance Task by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiZDQ0MTJiLTA1NjctNDMwNC1iNjM5LWY4YjEwZTQyMDQ1ZCIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk5OTk3MywiaWF0IjoxNzAzOTkyNzczfQ.BCIvzlnA0_3wK7yn4fwvr_j1OwRHP2rz3n49BqGMsS4"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:5002/api/SurveillanceTask/surveillance"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Submitted Tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiZDQ0MTJiLTA1NjctNDMwNC1iNjM5LWY4YjEwZTQyMDQ1ZCIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk5OTk3MywiaWF0IjoxNzAzOTkyNzczfQ.BCIvzlnA0_3wK7yn4fwvr_j1OwRHP2rz3n49BqGMsS4"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:5002/api/Task/submitted"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"User field should be empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    responseData.forEach(function(task) {\r",
+									"        pm.expect(task.user).to.be.oneOf([null, \"\"]);\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3ZjA5NzgxLTRkZTItNGQyYS04YTk1LTQ5OTQ0ODZmNjc5ZSIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwNDA3Nzk4MiwiaWF0IjoxNzA0MDcwNzgyfQ.8r-9FxmHrdIpE-DbU8bD_fzGLPE1Impm93o3brsHevI"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Description\": \"Surveillance task description\",\r\n  \"TargetBuilding\": \"Example Building\",\r\n  \"TargetFloor\": 5,\r\n  \"ContactInfo\": \"Contact information for the task\",\r\n  \"User\": \"John Doe\",\r\n  \"RobotId\": \"123456\",\r\n  \"RobotType\": \"SecurityBot\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/Task/filter?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"Task",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Verify Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3ZjA5NzgxLTRkZTItNGQyYS04YTk1LTQ5OTQ0ODZmNjc5ZSIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwNDA3Nzk4MiwiaWF0IjoxNzA0MDcwNzgyfQ.8r-9FxmHrdIpE-DbU8bD_fzGLPE1Impm93o3brsHevI"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5002/api/Task/filter?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"Task",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Route Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"ContactStart and contactEnd are in valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.contactStart).to.be.a('string').and.to.match(/[a-zA-Z]+/);\r",
+									"    pm.expect(responseData.contactEnd).to.be.a('string').and.to.match(/[a-zA-Z]+/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"TaskStatus and taskType are within the expected range of values\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.taskStatus).to.be.within(0, 3);\r",
+									"    pm.expect(responseData.taskType).to.be.oneOf([0, 1, 2]);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiZDQ0MTJiLTA1NjctNDMwNC1iNjM5LWY4YjEwZTQyMDQ1ZCIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwNDA0NzIxOSwiaWF0IjoxNzA0MDQwMDE5fQ.TPEf7jhXJmVJHSa-lgRqmzxJ842zNRBJiZNpynAsuDw"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 2,\r\n        \"taskStatus\": 0,\r\n        \"description\": \"Surveillance task description\",\r\n        \"taskType\": 1,\r\n        \"user\": \"John Doe\",\r\n        \"robotId\": null,\r\n        \"robotType\": null,\r\n        \"name\": \"surveillance\",\r\n        \"fromLocation\": {\r\n            \"id\": 3,\r\n            \"building\": \"g\",\r\n            \"room\": 1,\r\n            \"x\": 1,\r\n            \"y\": 1\r\n        },\r\n        \"toLocation\": {\r\n            \"id\": 4,\r\n            \"building\": \"g\",\r\n            \"room\": 1,\r\n            \"x\": 3,\r\n            \"y\": 3\r\n        }\r\n    },\r\n    {\r\n        \"id\": 1,\r\n        \"taskStatus\": 4,\r\n        \"description\": \"adad\",\r\n        \"taskType\": 0,\r\n        \"user\": \"JohnDoe@me.com\",\r\n        \"robotId\": null,\r\n        \"robotType\": null,\r\n        \"name\": \"transport\",\r\n        \"fromLocation\": {\r\n            \"id\": 1,\r\n            \"building\": \"g\",\r\n            \"room\": 1,\r\n            \"x\": 1,\r\n            \"y\": 1\r\n        },\r\n        \"toLocation\": {\r\n            \"id\": 2,\r\n            \"building\": \"g\",\r\n            \"room\": 1,\r\n            \"x\": 4,\r\n            \"y\": 1\r\n        }\r\n    }\r\n]"
+						},
+						"url": "http://localhost:5002/api/RouteTasks/createTasksAndBestSequenceTask"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Planeamento",
+			"item": [
+				{
+					"name": "CreateGrafo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData).to.have.property('buildingACode');",
+									"  pm.expect(responseData).to.have.property('buildingBCode');",
+									"  pm.expect(responseData).to.have.property('floorA');",
+									"  pm.expect(responseData).to.have.property('floorB');",
+									"  pm.expect(responseData).to.have.property('locationA');",
+									"  pm.expect(responseData).to.have.property('locationB');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Building codes are non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.buildingACode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"  pm.expect(responseData.buildingBCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Floors are non-negative integers\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.floorA).to.be.a('number').and.to.be.at.least(0);",
+									"    pm.expect(responseData.floorB).to.be.a('number').and.to.be.at.least(0);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://10.9.10.76:4000/api/prologue/create?edificio=b&piso=b1&coluna=5&linha=5",
+							"protocol": "http",
+							"host": [
+								"10",
+								"9",
+								"10",
+								"76"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"prologue",
+								"create"
+							],
+							"query": [
+								{
+									"key": "edificio",
+									"value": "b"
+								},
+								{
+									"key": "piso",
+									"value": "b1"
+								},
+								{
+									"key": "coluna",
+									"value": "5"
+								},
+								{
+									"key": "linha",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aStar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://10.9.10.76:4000/api/prologue/path?inicio=cel(a,a1,1,2)&fim=cel(a,a1,3,3)",
+							"protocol": "http",
+							"host": [
+								"10",
+								"9",
+								"10",
+								"76"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"prologue",
+								"path"
+							],
+							"query": [
+								{
+									"key": "inicio",
+									"value": "cel(a,a1,1,2)"
+								},
+								{
+									"key": "fim",
+									"value": "cel(a,a1,3,3)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateGrafo Prologue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData).to.have.property('buildingACode');",
+									"  pm.expect(responseData).to.have.property('buildingBCode');",
+									"  pm.expect(responseData).to.have.property('floorA');",
+									"  pm.expect(responseData).to.have.property('floorB');",
+									"  pm.expect(responseData).to.have.property('locationA');",
+									"  pm.expect(responseData).to.have.property('locationB');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Building codes are non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.buildingACode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"  pm.expect(responseData.buildingBCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Floors are non-negative integers\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.floorA).to.be.a('number').and.to.be.at.least(0);",
+									"    pm.expect(responseData.floorB).to.be.a('number').and.to.be.at.least(0);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4701/planning/create?edificio=b&piso=b1&coluna=5&linha=5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4701",
+							"path": [
+								"planning",
+								"create"
+							],
+							"query": [
+								{
+									"key": "edificio",
+									"value": "b"
+								},
+								{
+									"key": "piso",
+									"value": "b1"
+								},
+								{
+									"key": "coluna",
+									"value": "5"
+								},
+								{
+									"key": "linha",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aStar Prologue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4701/planning/path?inicio=cel(g,g1,1,2)&fim=cel(g,g1,3,3)",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4701",
+							"path": [
+								"planning",
+								"path"
+							],
+							"query": [
+								{
+									"key": "inicio",
+									"value": "cel(g,g1,1,2)"
+								},
+								{
+									"key": "fim",
+									"value": "cel(g,g1,3,3)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateTarefas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData).to.have.property('buildingACode');",
+									"  pm.expect(responseData).to.have.property('buildingBCode');",
+									"  pm.expect(responseData).to.have.property('floorA');",
+									"  pm.expect(responseData).to.have.property('floorB');",
+									"  pm.expect(responseData).to.have.property('locationA');",
+									"  pm.expect(responseData).to.have.property('locationB');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Building codes are non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.buildingACode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"  pm.expect(responseData.buildingBCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Floors are non-negative integers\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.floorA).to.be.a('number').and.to.be.at.least(0);",
+									"    pm.expect(responseData.floorB).to.be.a('number').and.to.be.at.least(0);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4701/planning/createTask?taskName=tarefaG&inicio=cel(g,g1,2,2)&fim=cel(g,g1,7,2)",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4701",
+							"path": [
+								"planning",
+								"createTask"
+							],
+							"query": [
+								{
+									"key": "taskName",
+									"value": "tarefaG"
+								},
+								{
+									"key": "inicio",
+									"value": "cel(g,g1,2,2)"
+								},
+								{
+									"key": "fim",
+									"value": "cel(g,g1,7,2)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CriarPercursoTarefas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lista\": \"tarefaG,tarefaT\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:4701/planning/caminhotarefas"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateGrafo Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData).to.have.property('buildingACode');",
+									"  pm.expect(responseData).to.have.property('buildingBCode');",
+									"  pm.expect(responseData).to.have.property('floorA');",
+									"  pm.expect(responseData).to.have.property('floorB');",
+									"  pm.expect(responseData).to.have.property('locationA');",
+									"  pm.expect(responseData).to.have.property('locationB');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Building codes are non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.buildingACode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"  pm.expect(responseData.buildingBCode).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Floors are non-negative integers\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.floorA).to.be.a('number').and.to.be.at.least(0);",
+									"    pm.expect(responseData.floorB).to.be.a('number').and.to.be.at.least(0);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZjllYTY1LWJiNGItNGEzNy1iNzc1LTczNzY0ZjU2YjFkNSIsImVtYWlsIjoiMTA1MDM0NzRAaXNlcC5jb20iLCJyb2xlIjoiN2FjMDlmODQtYTQ5My00N2MxLThmM2EtY2U0Njc5MGQ2YTMwIiwiZmlyc3ROYW1lIjoiUnVpIiwibGFzdE5hbWUiOiJUZWl4ZWlyYSIsImV4cCI6MTcwMzc5MjM4My44MjQsImlhdCI6MTY5ODYwODM4M30.E5BGzHmUYGkrXZLP4EBqC37_1TyeU5JNSVK0mlXhmLs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:4701/planning/create?edificio=g&piso=g1&coluna=9&linha=3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4701",
+							"path": [
+								"planning",
+								"create"
+							],
+							"query": [
+								{
+									"key": "edificio",
+									"value": "g"
+								},
+								{
+									"key": "piso",
+									"value": "g1"
+								},
+								{
+									"key": "coluna",
+									"value": "9"
+								},
+								{
+									"key": "linha",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticação",
+			"item": [
+				{
+					"name": "Roles Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields - id and name\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData).to.have.property('id');\r",
+									"    pm.expect(responseData).to.have.property('name');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Id is a non-empty string\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Name is a non-empty string\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData).to.be.an('object');\r",
+									"  pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Campus_Manager\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"UserDTO object should exist and be an object\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"\r",
+									"  pm.expect(responseData.userDTO).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.userDTO.email).to.be.a('string').and.to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Password should not be empty\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.userDTO.password).to.exist.and.to.have.lengthOf.at.least(1, \"Password should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Token is present in the response\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.token).to.exist;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"cunha7@me.com\",\n  \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/signin"
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"UserDTO object is present and is an object\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.userDTO).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.userDTO.email).to.be.a('string').and.to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email should be in a valid format\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Token is present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.token).to.exist;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jorge\",\n  \"lastName\": \"Cunha\",\n  \"email\": \"cunha7@me.com\",\n  \"password\": \"1234\",\n  \"role\":\"Admin\",\n  \"userNif\":\"252663111\",\n  \"userNumber\":\"+351912638411\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "requestSignUp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields - firstName, lastName, email, password, userNif, and userNumber\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.firstName).to.exist;\r",
+									"    pm.expect(responseData.lastName).to.exist;\r",
+									"    pm.expect(responseData.email).to.exist;\r",
+									"    pm.expect(responseData.password).to.exist;\r",
+									"    pm.expect(responseData.userNif).to.exist;\r",
+									"    pm.expect(responseData.userNumber).to.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.email).to.be.a('string');\r",
+									"  pm.expect(responseData.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"NIF has a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.userNif).to.match(/^\\d{9}$/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"User number must be a non-empty string\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData).to.be.an('object');\r",
+									"  pm.expect(responseData.userNumber).to.be.a('string').and.to.have.lengthOf.at.least(1, \"User number should not be empty\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3ZjA5NzgxLTRkZTItNGQyYS04YTk1LTQ5OTQ0ODZmNjc5ZSIsImVtYWlsIjoiY3VuaGE3N0BtZS5jb20iLCJyb2xlIjoiQWRtaW4iLCJmaXJzdE5hbWUiOiJKb3JnZSIsImxhc3ROYW1lIjoiQ3VuaGEiLCJleHAiOjE3MDc2MDU5ODkuNjE1LCJpYXQiOjE3MDI0MjE5ODl9.4pzSJijGgX8vWpY_9nJy5tuSTxsG8WvcshO5vetqyYY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jorge\",\n  \"lastName\": \"Cunha\",\n  \"email\": \"testerrqtqtqr@me.com\",\n  \"password\": \"1234\",\n  \"userNif\":\"251663112\",\n  \"userNumber\":\"+351412538444\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/request"
+					},
+					"response": []
+				},
+				{
+					"name": "Requests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 403\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(403);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the Content-Type header set to 'application/json'\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Verify meaningful error message for unauthorized request\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData).to.be.a('string');\r",
+									"  pm.expect(responseData).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jorge\",\n  \"lastName\": \"Cunha\",\n  \"email\": \"cunha7@me.com\",\n  \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/getAllRequests"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request From Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Errors object is present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.errors).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Message field within errors object is a non-empty string\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.errors).to.exist;\r",
+									"  pm.expect(responseData.errors.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(300);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/request/teste@me.com"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Existing User Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/userinfo/cuna7@me.com"
+					},
+					"response": []
+				},
+				{
+					"name": "request Approve",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/request/approve/teste@me.com"
+					},
+					"response": []
+				},
+				{
+					"name": "GetTokenInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields - isAuthenticated, email, and role\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.isAuthenticated).to.exist;\r",
+									"    pm.expect(responseData.email).to.exist;\r",
+									"    pm.expect(responseData.role).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"\r",
+									"  pm.expect(responseData).to.be.an('object');\r",
+									"  pm.expect(responseData.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email should be in a valid format\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Role is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.role).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Role should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5ZDEyZjE3LWJmZDQtNDMzMS05NWZjLTQ5YjNhMzExNjYxMyIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMzk5ODcwMSwiaWF0IjoxNzAzOTkxNTAxfQ.5ggqLlKRHnGkxxLEAw7-Bsgn7R22DhDK4GLm48tt6fA"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:4500/authentication/auth/verifyToken"
+					},
+					"response": []
+				},
+				{
+					"name": "get Info From Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.firstName).to.exist;\r",
+									"    pm.expect(responseData.lastName).to.exist;\r",
+									"    pm.expect(responseData.email).to.exist;\r",
+									"    pm.expect(responseData.password).to.exist;\r",
+									"    pm.expect(responseData.role).to.exist;\r",
+									"    pm.expect(responseData.userNif).to.exist;\r",
+									"    pm.expect(responseData.userNumber).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email format is not valid\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Password meets the required criteria\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.password).to.exist.and.to.be.a('string');\r",
+									"    // Add additional checks for password criteria here\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/userInfo/cunha7@me.com"
+					},
+					"response": []
+				},
+				{
+					"name": "RefreshToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.token).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Token is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.token).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Token should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxNDNkNGU5LWFjZWEtNGEyMy1iZWJjLTc4ODFkZWJkMTljMCIsImVtYWlsIjoiY3VuaGE3QG1lLmNvbSIsInJvbGUiOiJBZG1pbiIsImZpcnN0TmFtZSI6IkpvcmdlIiwibGFzdE5hbWUiOiJDdW5oYSIsImV4cCI6MTcwMjQ4NzY4OCwiaWF0IjoxNzAyNDg2NDg4fQ.NnhoIU22fap-XR-Nq_nl_opXXolyceozBdH5PYaaf1Q"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/refreshtoken"
+					},
+					"response": []
+				},
+				{
+					"name": "Update InfoUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"UserDTO object should exist in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.userDTO).to.exist.and.to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Email is a non-empty string\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.userDTO.email).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Email should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Token is present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.token).to.exist;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Jorge\",\r\n    \"lastName\": \"Cunha\",\r\n    \"email\": \"cunha7@me.com\",\r\n    \"password\": \"1234\",\r\n    \"role\": \"Admin\",\r\n    \"userNif\": \"252663152\",\r\n    \"userNumber\": \"+351912638424\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/auth/updateUserInfo/true"
+					},
+					"response": []
+				},
+				{
+					"name": "Roles Get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Each object in the array has the required fields - id and name\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    responseData.forEach(function(role) {\r",
+									"        pm.expect(role).to.have.property('id');\r",
+									"        pm.expect(role).to.have.property('name');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"ID is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    responseData.forEach(function(role) {\r",
+									"        pm.expect(role.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"ID should be a non-empty string\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Name is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    responseData.forEach(function(role) {\r",
+									"        pm.expect(role.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:4500/authentication/roles"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

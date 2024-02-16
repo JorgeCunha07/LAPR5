@@ -1,0 +1,57 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Create New Room</h2>
+
+    <div class="form-group">
+      <label for="building">Select Building:</label>
+      <select id="building" [(ngModel)]="selectedBuilding" (change)="onBuildingSelected()">
+        <option *ngFor="let building of buildings" [value]="building.buildingCode">{{ building.buildingName }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="floorNumber">Select Floor:</label>
+      <select id="floorNumber" [(ngModel)]="selectedFloor">
+        <option *ngFor="let floor of floors" [value]="floor.floorNumber">{{ floor.floorNumber }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Room Name:</label>
+      <input type="text" id="name" [(ngModel)]="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Room Type:</label>
+      <select id="type" [(ngModel)]="type" name="type" required>
+        <option value="gabinete">Gabinete</option>
+        <option value="laboratorio">Laboratorio</option>
+        <option value="anfiteatro">Anfiteatro</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Room Description:</label>
+      <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="locationX">Room Location X:</label>
+      <input type="number" id="locationX" [(ngModel)]="roomLocationX" name="locationX" required>
+    </div>
+
+    <div class="form-group">
+      <label for="locationY">Room Location Y:</label>
+      <input type="number" id="locationY" [(ngModel)]="roomLocationY" name="locationY" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit" (click)="createRoom()">Create Room</button>
+      <button type="button" class="btn-back" (click)="goBack()">Back</button>
+    </div>
+
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  </div>
+</div>

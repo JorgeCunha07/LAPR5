@@ -1,0 +1,30 @@
+@startuml Update Elevator
+boundary "CampusManager" as x
+participant "Elevator-page-get-by-building\n<<HTML>>" as HTML
+participant "Elevator-page-get-by-building\n<<Component>>" as Component
+participant "ElevatorService\n<<Service>>" as Service
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC
+
+x -> HTML: selects option to Get all Elevators By Building
+activate HTML
+
+
+x <- HTML: Displays the form
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: listElevatorDTO = getElevatorsByBuilding()
+activate Component
+Component -> Service: listElevatorDTO = getElevatorsByBuilding(buildingFinderId)
+activate Service
+Service -> MGC: listElevatorDTO = getElevatorsByBuilding(buildingFinderId) "get buildingFinderId=param1"
+activate MGC
+deactivate MGC
+deactivate Service
+
+
+x <-- HTML: Displays the Elevators with parameters chosen by the user
+deactivate HTML
+
+deactivate HTML
+@enduml

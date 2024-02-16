@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+FleetManagerUI -> MDI: "api/robots" -> Get
+activate MDI
+MDI -> MDI: Handles the request,\n gets all the robot information
+FleetManagerUI <- MDI: Response status and Json
+participant  Planning
+
+@enduml

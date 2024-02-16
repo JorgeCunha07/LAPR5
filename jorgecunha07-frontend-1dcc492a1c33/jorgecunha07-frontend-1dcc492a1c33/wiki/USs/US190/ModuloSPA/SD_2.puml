@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor CampusManager
+CampusManager -> SPA : selects option to create Floor
+activate SPA
+CampusManager <- SPA : Displays the form to create a floor
+deactivate SPA
+CampusManager -> SPA : Fills the form and clicks on save
+activate SPA
+SPA -> MGC: "api/floors" -> Post
+activate MGC
+
+MGC -> MGC: Handles the body request,creates \n and saves the floor
+activate MGC
+deactivate MGC
+SPA <- MGC: Response status and Json
+CampusManager <- SPA: Shows the response status and Json
+
+
+
+
+
+@enduml

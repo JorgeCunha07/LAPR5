@@ -1,0 +1,25 @@
+
+<div class="page-container">
+  <div class="card">
+    <h2>Floors by Building</h2>
+
+    <div class="form-group">
+      <label for="building">Select Building:</label>
+      <select id="building" [(ngModel)]="selectedBuilding" (change)="onBuildingSelected(selectedBuilding)">
+        <option *ngFor="let building of buildings" [value]="building.buildingCode">{{ building.buildingName }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="floors">Floor Numbers:</label>
+      <div *ngIf="floorNumbers.length > 0">
+        <div *ngFor="let floorNumber of floorNumbers">{{ floorNumber }}</div>
+      </div>
+      <div *ngIf="floorNumbers.length === 0">No floors available for the selected building.</div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-back" (click)="goBack()">Back</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Modify Personal Information</h2>
+
+    <form (ngSubmit)="updateUserInfo()">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" [(ngModel)]="personalInfo.firstName" name="firstName">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" [(ngModel)]="personalInfo.lastName" name="lastName">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" [(ngModel)]="personalInfo.email" name="email" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="userNif">NIF</label>
+        <input type="text" id="userNif" [(ngModel)]="personalInfo.userNif" name="userNif">
+      </div>
+
+      <div class="form-group">
+        <label for="userNumber">User Number</label>
+        <input type="text" id="userNumber" [(ngModel)]="personalInfo.userNumber" name="userNumber">
+      </div>
+
+      <div class="form-group">
+        <input type="checkbox" id="alterPasswordCheck" (change)="onPasswordCheckboxChange($event)">
+        <label for="alterPasswordCheck">Alter Password</label>
+      </div>
+
+      <div class="form-group" *ngIf="alteredPassword === 'true'">
+        <label for="password">New Password</label>
+        <input type="password" id="password" [(ngModel)]="personalInfo.password" name="password">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Update Information</button>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-submit" (click)="goBack()">Go Back</button>
+      </div>
+
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+CampusManagerUI -> MDI: "api/floor" -> Post
+activate MDI
+MDI -> MDI: Handles the body request,creates \n and saves the building
+CampusManagerUI <- MDI: Response status and Json
+participant  Planning
+
+@enduml

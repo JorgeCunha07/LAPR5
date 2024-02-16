@@ -1,0 +1,32 @@
+@startuml
+boundary "CampusManager" as x
+participant "Elevator-page-create-elevator\n<<HTML>>" as HTML
+participant "Elevator-page-create-elevator\n<<Component>>" as Component
+participant "ElevatorService\n<<Service>>" as Service
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC
+
+x -> HTML: selects option to create Elevator
+activate HTML
+x <- HTML: Displays the form to create a elevator
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: elevatorResponse = createElevator()
+activate Component
+Component -> DTO: elevatorDTO = createElevator()
+activate DTO
+deactivate DTO
+Component -> Service: response =createElevator(elevatorDTO)
+activate Service
+Service -> MGC: elevatorResponse =createElevator(elevatorDTO)\n "Post /api/elevators"
+activate MGC
+deactivate MGC
+deactivate Service
+
+Component --> HTML: responseMessage
+HTML --> x: shows responseMessage
+deactivate Component
+
+deactivate HTML
+
+@enduml

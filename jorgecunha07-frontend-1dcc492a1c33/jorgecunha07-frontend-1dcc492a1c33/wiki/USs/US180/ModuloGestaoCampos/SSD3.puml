@@ -1,0 +1,66 @@
+@startuml
+boundary x
+participant floorRoute
+participant floorController <<Controller>>
+participant floorService <<Service>>
+participant floorMap <<Mapper>>
+participant floorDTO <<DTO>>
+participant floor <<Entity>>
+participant buildingRepository <<Repository>>
+participant floorRepository <<Repository>>
+database driverDB
+
+
+x -> floorRoute: POST /api/floor/createFloor
+activate floorRoute
+floorRoute -> floorController: handles the request, calls controller
+activate floorController
+floorController -> floorService: send request to service
+activate floorService
+
+floorService -> buildingRepository: check if building exists
+activate buildingRepository
+buildingRepository -> driverDB: find
+activate driverDB
+deactivate driverDB
+buildingRepository --> floorService: response
+deactivate buildingRepository
+
+floorService -> floorRepository: check if floor already exists
+activate floorRepository
+floorRepository -> driverDB: find
+activate driverDB
+deactivate driverDB
+floorRepository --> floorService: response
+deactivate floorRepository
+
+floorService -> floor: create
+activate floor
+floor --> floorService: return floor
+deactivate floor
+
+floorService -> floorRepository: save
+activate floorRepository
+floorRepository -> driverDB: save
+activate driverDB
+deactivate driverDB
+floorRepository --> floorService: return floor
+deactivate floorRepository
+
+floorService -> floorMap: convert data
+activate floorMap
+floorMap --> floor: uses data
+activate floor
+deactivate floor
+
+floorMap --> floorService: return converted data
+deactivate floorMap
+
+floorService --> floorController: return converted data
+deactivate floorService
+
+floorController --> floorRoute: return response status and json
+deactivate floorController
+floorRoute --> x: 2. response status and json
+deactivate floorRoute
+@enduml

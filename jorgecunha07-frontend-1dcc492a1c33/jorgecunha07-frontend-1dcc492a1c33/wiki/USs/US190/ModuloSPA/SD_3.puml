@@ -1,0 +1,43 @@
+@startuml Create Floor
+boundary "CampusManager" as x 
+participant "Floor-page-create-floor\n<<HTML>>" as HTML
+participant "Floor-page-create-floor\n<<Component>>" as Component
+participant "FloorService\n<<Service>>" as FloorService
+participant "BuildingService\n<<Service>>" as BuildingService
+participant "Floor\n<<DTO>>" as FloorDTO
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC
+
+x -> HTML: selects option to create Floor
+activate HTML
+HTML -> Component: listBuildings = loadBuildings()
+activate Component
+
+Component -> BuildingService: listBuildings = getBuildingsList()
+activate BuildingService
+BuildingService -> MGC: listBuildings = getBuildingsList() "GET /api/buildingsAll"
+activate MGC
+deactivate MGC
+deactivate BuildingService
+deactivate Component
+
+x <- HTML: Displays the form to create a Floor
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: responseFloor = createFloor()
+activate Component
+Component -> FloorDTO: floorDto = createFloorDTO()
+activate FloorDTO
+deactivate FloorDTO
+Component -> FloorService: responseFloor = createFloor(floorDto)
+activate FloorService
+FloorService -> MGC: responseFloor = createNewFloor(floorDto) "POST /api/floors"
+activate MGC
+deactivate MGC
+deactivate FloorService
+
+Component --> HTML: responseMessage
+HTML --> x: Shows the message
+deactivate Component
+deactivate HTML
+@enduml

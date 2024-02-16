@@ -1,0 +1,73 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Create User</h2>
+    <form>
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" [(ngModel)]="userDTO.firstName" name="firstName">
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" [(ngModel)]="userDTO.lastName" name="lastName">
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" [(ngModel)]="userDTO.email" name="email">
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" [(ngModel)]="userDTO.password" name="password">
+      </div>
+
+      <!-- Role -->
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" [(ngModel)]="userDTO.role" name="role">
+          <option *ngFor="let role of listRoles" [value]="role.name">{{ role.name }}</option>
+        </select>
+      </div>
+      <!-- Checkbox to toggle visibility of NIF and User Number fields -->
+      <div class="form-group">
+        <label>
+          <input type="checkbox" [(ngModel)]="showNifAndNumber" name="showNifAndNumber">
+          Check to enter NIF and User Number
+        </label>
+      </div>
+
+      <!-- User NIF -->
+      <div class="form-group" *ngIf="showNifAndNumber">
+        <label for="userNif">NIF</label>
+        <input type="text" id="userNif" [(ngModel)]="userDTO.userNif" name="userNif">
+      </div>
+
+      <!-- User Number -->
+      <div class="form-group" *ngIf="showNifAndNumber">
+        <label for="userNumber">User Number</label>
+        <input type="text" id="userNumber" [(ngModel)]="userDTO.userNumber" name="userNumber">
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-submit" (click)="createUser()">Create User</button>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-submit" (click)="goBack()">Go Back</button>
+      </div>
+    </form>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+  </div>
+</div>

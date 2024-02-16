@@ -1,0 +1,45 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Create New Passageway</h2>
+    <form (ngSubmit)="createPassageway()">
+      <div class="form-group">
+        <label for="buildingACode">Building A Code:</label>
+        <input type="text" id="buildingACode" [(ngModel)]="passageway.buildingACode" name="buildingACode" required>
+      </div>
+      <div class="form-group">
+        <label for="buildingBCode">Building B Code:</label>
+        <input type="text" id="buildingBCode" [(ngModel)]="passageway.buildingBCode" name="buildingBCode" required>
+      </div>
+      <div class="form-group">
+        <label for="floorA">Floor A:</label>
+        <input type="number" id="floorA" [(ngModel)]="passageway.floorA" name="floorA" required>
+      </div>
+      <div class="form-group">
+        <label for="floorB">Floor B:</label>
+        <input type="number" id="floorB" [(ngModel)]="passageway.floorB" name="floorB" required>
+      </div>
+      <div class="form-group">
+        <label for="locationAX">Location A X:</label>
+        <input type="number" id="locationAX" [(ngModel)]="passageway.locationA.x" name="locationAx" required>
+      </div>
+      <div class="form-group">
+        <label for="locationAY">Location A Y:</label>
+        <input type="number" id="locationAY" [(ngModel)]="passageway.locationA.y" name="locationAy" required>
+      </div>
+      <div class="form-group">
+        <label for="locationBX">Location B X:</label>
+        <input type="number" id="locationBX" [(ngModel)]="passageway.locationB.x" name="locationBx" required>
+      </div>
+      <div class="form-group">
+        <label for="locationBY">Location B Y:</label>
+        <input type="number" id="locationBY" [(ngModel)]="passageway.locationB.y" name="locationBy" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Create Passageway</button>
+        <button type="button" class="btn-back" (click)="goBack()">Back</button>
+      </div>
+    </form>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  </div>
+</div>

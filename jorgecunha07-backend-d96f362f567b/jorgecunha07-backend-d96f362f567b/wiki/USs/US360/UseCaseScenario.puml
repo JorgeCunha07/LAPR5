@@ -1,0 +1,7 @@
+@startuml
+skinparam actorStyle awesome
+:FleetManager: --> (Use)
+
+"Create a robot" as (Use)
+
+@enduml

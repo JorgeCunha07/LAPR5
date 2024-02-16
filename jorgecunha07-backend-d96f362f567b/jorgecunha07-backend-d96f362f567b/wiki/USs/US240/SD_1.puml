@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+participant  CampusManager
+participant  System
+
+activate CampusManager
+CampusManager -> System : requests creation of passageway between buildings
+activate System
+CampusManager <- System : asks for information for the creation of the passageway between buildings
+deactivate System
+CampusManager -> System : sends information to the creation of given passageway between buildings
+activate System
+CampusManager <- System : delivers success or failure of the requests
+deactivate System
+
+@enduml

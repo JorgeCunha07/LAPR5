@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor CampusManager
+CampusManager -> SPA : selects option to get Elevator by building
+activate SPA
+CampusManager <- SPA : Displays the form to select building
+deactivate SPA
+CampusManager -> SPA : Fills the form and clicks on save
+activate SPA
+SPA -> MGC: "api/elevators/buildingFinderId=:parm1" -> GET
+activate MGC
+
+MGC -> MGC: Handles the body request,updates \n and returns elevators on building
+activate MGC
+deactivate MGC
+SPA <- MGC: Response status and Json
+CampusManager <- SPA: Shows the response status and Json
+
+
+
+
+
+@enduml

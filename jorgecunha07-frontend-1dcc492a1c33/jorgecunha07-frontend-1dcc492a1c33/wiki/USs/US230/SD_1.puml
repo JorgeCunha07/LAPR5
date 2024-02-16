@@ -1,0 +1,18 @@
+@startuml
+autonumber
+participant  CampusManager
+participant  System
+
+CampusManager -> System : requests loading of FloorMap
+activate System
+System --> CampusManager : requests floorMap path
+deactivate System
+CampusManager -> System :  Provides path to FloorMap
+activate System
+alt OK
+System --> CampusManager : FloorMap successfully created
+    else ERROR
+System --> CampusManager : Error creating floor map
+  end alt
+
+@enduml

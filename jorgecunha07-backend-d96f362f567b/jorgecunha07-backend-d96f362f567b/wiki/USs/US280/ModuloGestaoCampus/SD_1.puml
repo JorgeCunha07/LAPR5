@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor  CampusManager
+participant  System
+
+activate CampusManager
+CampusManager -> System : requests update of the elevator
+activate System
+CampusManager <- System : asks for information for the update of elevator
+deactivate System
+CampusManager -> System : sends information to the update of elevator
+activate System
+CampusManager <- System : delivers success or failure of the request update
+deactivate System
+
+@enduml

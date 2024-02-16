@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor  CampusManager
+participant  System
+
+activate CampusManager
+CampusManager -> System : requests all info of all buildings
+activate System
+CampusManager <- System : delivers success or failure of the request (Get all Info of all buildings)
+deactivate System
+
+@enduml

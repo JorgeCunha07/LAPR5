@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+CampusManagerUI -> MDI: "api/building" -> GET/building/min=:param1/max=:param2(json)
+activate MDI
+MDI -> MDI: Handles the request,\n gets all the building information
+CampusManagerUI <- MDI: Response status and Json
+participant  Planning
+
+
+
+
+@enduml

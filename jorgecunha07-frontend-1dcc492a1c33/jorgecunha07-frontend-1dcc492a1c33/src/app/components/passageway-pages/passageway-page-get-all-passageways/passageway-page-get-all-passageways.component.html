@@ -1,0 +1,37 @@
+<div class="page-container">
+  <div class="card content-container">
+    <h2>Get Passageways Between Two Buildings</h2>
+    <form (ngSubmit)="getAllPassagewaysBetweenBuildings()">
+      <div class="form-group">
+        <label for="buildingACode">Building A Code:</label>
+        <input type="text" id="buildingACode" [(ngModel)]="buildingACode" name="buildingACode" required>
+      </div>
+      <div class="form-group">
+        <label for="buildingBCode">Building B Code:</label>
+        <input type="text" id="buildingBCode" [(ngModel)]="buildingBCode" name="buildingBCode" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-submit action-button">List Passageways</button>
+      </div>
+    </form>
+
+    <div *ngIf="results.length > 0" class="results-container">
+      <h2>Passageways:</h2>
+      <div class="results-container">
+        <div *ngFor="let passageway of results" class="result-item">
+          <div class="passageway-info">
+            <h2>Building A: {{ passageway.buildingACode }}, Building B: {{ passageway.buildingBCode }}</h2>
+            <p>Floor A: {{ passageway.floorA }}, Floor B: {{ passageway.floorB }}</p>
+            <p>Location A: X: {{ passageway.locationA.x }}, Y: {{ passageway.locationA.y }}</p>
+            <p>Location B: X: {{ passageway.locationB.x }}, Y: {{ passageway.locationB.y }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn-back" (click)="goBack()">Back</button>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  </div>
+</div>

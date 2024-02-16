@@ -1,0 +1,31 @@
+@startuml
+boundary "CampusManager" as x
+participant "Floor-page-get-by-building\n<<HTML>>" as HTML
+participant "Floor-page-get-by-building\n<<Component>>" as Component
+participant "FloorService\n<<Service>>" as Service
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC
+
+x -> HTML: selects option to Get all Floors By Building
+activate HTML
+
+
+x <- HTML: Displays the form
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: listFloorDTO = getFloorsByBuilding()
+activate Component
+Component -> Service: listFloorDTO = getFloorsByBuilding(buildingFinderId)
+activate Service
+Service -> MGC: listFloorDTO = getFloorsByBuilding(buildingFinderId) "get buildingFinderId=param1"
+activate MGC
+deactivate MGC
+deactivate Service
+
+
+x <-- HTML: Displays the Floors with parameters chosen by the user
+deactivate HTML
+
+deactivate HTML
+
+@enduml

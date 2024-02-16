@@ -1,0 +1,68 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+  background: url('/assets/wallpaper.jpeg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.25rem 0;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  &:hover {
+    background-color: darken(#007bff, 10%);
+  }
+}
+
+.results-container {
+  margin-top: 1rem;
+}
+
+.building-card {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.no-results {
+  color: #6c757d;
+  padding: 1rem;
+}

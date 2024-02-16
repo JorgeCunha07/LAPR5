@@ -1,0 +1,44 @@
+<div class="page-container">
+    <div class="card">
+        <h2>Update Floor Map</h2>
+
+        <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+        <form (ngSubmit)="updateFloor()">
+
+            <!-- Dropdown to select a building -->
+            <div class="form-group">
+                <label for="buildingSelector">Select Building:</label>
+                <select class="form-control" id="buildingSelector" [(ngModel)]="floor.buildingFinderId" (ngModelChange)="onBuildingChange()" name="buildingFinderId" required>
+                    <option value="" disabled selected>Select a Building</option>
+                    <option *ngFor="let building of listBuildings" [value]="building.buildingCode">
+                        {{ building.buildingCode }}
+                    </option>
+                </select>
+            </div>
+
+            <!-- Dropdown to select a floor within the selected building -->
+            <div class="form-group">
+                <label for="floorSelector">Select Floor:</label>
+                <select class="form-control" id="floorSelector" [(ngModel)]="floor.floorNumber" name="floorNumber" required>
+                    <option value="" disabled selected>Select a Floor</option>
+                    <option *ngFor="let fl of filteredFloors" [value]="fl.floorNumber">
+                        {{ fl.floorNumber }}
+                    </option>
+                </select>
+            </div>
+
+            <!-- File input for uploading a new floor map -->
+            <div class="form-group">
+                <label for="floorMap">Upload Floor Map:</label>
+                <input type="file" class="form-control" id="floorMap" (change)="onFileSelected($event)" name="floorMap" accept="application/json">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-submit">Update Floor Map</button>
+              <button type="button" class="btn-back" (click)="goBack()">Back</button>
+            </div>
+        </form>
+    </div>
+</div>

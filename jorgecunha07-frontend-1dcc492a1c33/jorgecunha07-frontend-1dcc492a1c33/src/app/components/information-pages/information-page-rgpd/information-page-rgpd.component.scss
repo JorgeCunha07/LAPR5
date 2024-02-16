@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; // Set the height to support the min-height in the container
+  background: green; // Temporarily set a background color to see if the body is styled correctly
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('/assets/wallpaper.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 30px;
+}
+
+.card {
+  background: rgba(249, 252, 252, 0.5); /* Slightly transparent white */
+  margin: 15px auto;
+}

@@ -1,0 +1,55 @@
+<div class="page-container">
+  <div class="card">
+    <h3>User Request</h3>
+    <form (ngSubmit)="register()">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newUser.firstName" name="firstName" placeholder="First Name" required>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" [(ngModel)]="newUser.email" name="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <input type="password" [(ngModel)]="newUser.password" name="password" placeholder="Password" required>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newUser.userNif" name="userNif" placeholder="NIF" required>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newUser.userNumber" name="userNumber" placeholder="Telephone Number" required>
+      </div>
+
+      <div class="form-group">
+        <input type="checkbox" id="consentCheckbox" name="consent" [(ngModel)]="consentGiven">
+        <label for="consentCheckbox">Dou o meu consentimento ao que foi demonstrado nestes PDFs</label>
+      </div>
+
+      <div class="form-group">
+        <button type="button" (click)="downloadPDFs()">Download PDFs</button>
+      </div>
+
+
+      <div class="form-group">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+
+    <div *ngIf="isRegistrationSuccessful" class="success-message">
+      <h4>Registration Successful</h4>
+      <p>Welcome, {{ registrationResponse.userDTO.firstName }}!</p>
+    </div>
+
+    <!-- Display error message -->
+    <div *ngIf="isRegistrationSuccessful === false" class="error-message">
+      <h4>Registration Failed</h4>
+      <p>Sorry, there was a problem with your registration.</p>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-submit" (click)="goBack()">Go Back</button>
+    </div>
+
+  </div>
+</div>

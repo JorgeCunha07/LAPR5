@@ -1,0 +1,30 @@
+<div class="login-page">
+  <div class="login-container">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="model.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="model.password" name="password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="submit-button">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Error Pop-up -->
+  <div class="popup-overlay" *ngIf="showErrorPopup" (click)="closePopup()">
+    <div class="popup" (click)="$event.stopPropagation()">
+      <div class="popup-header">
+        <span>Error</span>
+        <button class="close-btn" (click)="closePopup()">&times;</button>
+      </div>
+      <div class="popup-body">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+</div>

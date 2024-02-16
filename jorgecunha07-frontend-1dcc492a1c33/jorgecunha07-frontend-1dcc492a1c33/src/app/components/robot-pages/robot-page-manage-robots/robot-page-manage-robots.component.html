@@ -1,0 +1,39 @@
+<div class="page-container">
+  <h1>Robot Overview</h1>
+
+  <!-- Add a text field for filtering -->
+  <div class="filter-container">
+    <label for="robotCodeFilter">Filter by Robot Code:</label>
+    <input type="text" id="robotCodeFilter" [(ngModel)]="robotCodeFilter" />
+    <button (click)="applyFilter()">Apply Filter</button>
+  </div>
+
+  <div class="content-container">
+    <ng-container *ngIf="filteredResults.length > 0; else noResults">
+      <div class="results-container">
+        <div *ngFor="let robot of filteredResults" class="result-item">
+          <div class="robot-info">
+            <h2>{{ robot.robotNickname }}</h2>
+            <p>Code: {{ robot.robotCode }}</p>
+            <p>Description: {{ robot.robotDescription }}</p>
+            <p>Serial Number: {{ robot.robotSerialNumber }}</p>
+            <p>Robot Type Name: {{ robot.robotTypeName }}</p>
+            <p>
+              State:
+              <span [ngClass]="{'enabled-state': robot.enabled, 'disabled-state': !robot.enabled}">
+                {{ robot.enabled ? 'Enabled' : 'Disabled' }}
+              </span>
+            </p>
+            <button (click)="toggleRobotState(robot)">Enable/Disable</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noResults>
+      <p class="no-results-message">No robots found.</p>
+    </ng-template>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn-back" (click)="goBack()">Back</button>
+  </div>
+</div>

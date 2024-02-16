@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor CampusManager
+CampusManager -> SPA : selects option to get all Buildings with parameters
+activate SPA
+CampusManager <- SPA : Displays the form to get all Buildings with parameters
+deactivate SPA
+CampusManager -> SPA : Fills the form and clicks on save
+activate SPA
+SPA -> MGC: "api/building/minimo=param1/max=param2" -> GET
+activate MGC
+
+MGC -> MGC: Handles the body request and get all Buildings with parameters
+activate MGC
+deactivate MGC
+SPA <- MGC: Response status and Json
+CampusManager <- SPA: Shows the response status and Json
+
+
+
+
+
+@enduml

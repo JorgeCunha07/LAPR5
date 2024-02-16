@@ -1,0 +1,27 @@
+<div class="page-container">
+  <div class="card">
+    <h2>User Approval Requests</h2>
+
+    <div *ngFor="let user of listOfUsers">
+      <div class="user-details">
+        <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Role:</strong> {{ user.role }}</p>
+        <p><strong>NIF:</strong> {{ user.userNif }}</p>
+        <p><strong>User Number:</strong> {{ user.userNumber }}</p>
+
+        <button class="btn-submit" (click)="approveUser(user.email)">Approve</button>
+        <button class="btn-submit deny" (click)="denyingUser(user.email)">Deny</button>
+      </div>
+    </div>
+    <button class="btn-submit" (click)="goBack()">Go Back</button>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+participant  CampusManager
+participant  System
+
+activate CampusManager
+CampusManager -> System : requests display of all passageways from a specific building to all other buildings
+CampusManager -> System : displays all available passageways from that building to another floors
+activate System
+CampusManager <- System : delivers success or failure of the requests
+deactivate System
+
+@enduml

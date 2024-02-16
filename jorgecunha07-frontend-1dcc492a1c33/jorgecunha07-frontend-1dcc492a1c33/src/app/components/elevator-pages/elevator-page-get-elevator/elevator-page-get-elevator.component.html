@@ -1,0 +1,30 @@
+
+<div class="page-container">
+  <div class="card">
+    <h2>Elevators by Building</h2>
+
+    <div class="form-group">
+      <label for="building">Select Building:</label>
+      <select id="building" [(ngModel)]="selectedBuilding" (change)="onBuildingSelected()">
+        <option *ngFor="let building of buildings" [value]="building.buildingCode">{{ building.buildingName }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="elevators">Elevator List:</label>
+      <div *ngIf="elevators.length > 0">
+        <div *ngFor="let elevator of elevators">
+          <div>Location: X: {{ elevator.location?.x }}, Y: {{ elevator.location?.y }}</div>
+          <div>Floors Served: {{ elevator.floors.join(', ') }}</div>
+          <hr>
+        </div>
+      </div>
+      <div *ngIf="elevators.length === 0">No elevators available for the selected building.</div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-back" (click)="goBack()">Back</button>
+    </div>
+
+  </div>
+</div>

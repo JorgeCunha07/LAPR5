@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor  FleetManager
+participant  System
+
+activate FleetManager
+FleetManager -> System : requests all info of all robots in the fleet
+activate System
+FleetManager <- System : delivers success or failure of the request (Get all Info of all robots in the fleet)
+deactivate System
+
+@enduml

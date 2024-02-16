@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor CampusManager
+CampusManager -> SPA : selects option to get all Buildings
+activate SPA
+CampusManager <- SPA : Displays the form to get all Buildings
+deactivate SPA
+CampusManager -> SPA :  clicks on load
+activate SPA
+SPA -> MGC: "api/building" -> GET
+activate MGC
+
+MGC -> MGC: Handles the body request,gets all the buildings Information
+activate MGC
+deactivate MGC
+SPA <- MGC: Response status and Json
+CampusManager <- SPA: Shows the response status and Json
+
+
+
+
+
+@enduml

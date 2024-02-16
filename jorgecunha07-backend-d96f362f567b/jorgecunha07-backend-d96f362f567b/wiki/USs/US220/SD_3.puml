@@ -1,0 +1,66 @@
+@startuml
+boundary X
+participant ":RoutePassageway" as ROUTE
+participant "PassagewayController\n<<Controller>>" as CTRL
+participant "PassagewayMapper\n<<Json2DTO>>" as MAPPER
+participant "PassagewayDTO\n<<DTO>>" as DTO
+participant "PassagewayService\n<<Service>>" as SRV
+participant "Passageway\n<<Entity>>" as ENTITY
+participant "PassagewayRepo\n:IBuildingRepo<<Repository>>" as REPO
+participant "PassagewayMap\n<<Domain2Data>>" as MAPPER2
+participant "DataPassageway<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : GET/passageways/floors/:buildingCodejson)
+activate ROUTE
+ROUTE -> CTRL : getFloorsFromBuildingWithPassageway(json)
+    activate CTRL
+
+
+    CTRL -> SRV : passagewayDTO = getFloorsFromBuildingWithPassageway(buildingACode)
+        activate SRV
+
+        SRV -> REPO : getFloorsFromBuildingWithPassageway(buildingACode)
+            activate REPO
+
+
+
+            REPO -> DB : getFloorsFromBuildingWithPassageway()
+                activate DB
+                deactivate DB
+
+            deactivate REPO
+        SRV -> MAPPER : IPassagewayDTO[] = toDTO(passageway[])
+        activate MAPPER
+          loop (while data available)
+              MAPPER -> ENTITY : buildingCodeA = getBuildingCodeA()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : buildingCodeB = getBuildingCodeB()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : floorA = getFloorANumber()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : floorB = getFloorBNumber()
+                  activate ENTITY
+                  deactivate ENTITY
+              MAPPER -> ENTITY : locationA = getlocationA()
+                   activate ENTITY
+                   deactivate ENTITY
+              MAPPER -> ENTITY : locationB = getlocationB()
+                   activate ENTITY
+                   deactivate ENTITY
+          end loop
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml Update Building
+boundary "CampusManager" as x 
+participant "Building-page-update-building\n<<HTML>>" as HTML
+participant "Building-page-update-building\n<<Component>>" as Component 
+participant "BuildingService\n<<Service>>" as Service 
+participant "Building\n<<DTO>>" as DTO 
+participant "Modulo de Gestão de Campus\n<<MGC>>" as MGC 
+
+x -> HTML: selects option to update Building
+activate HTML
+HTML -> Component: listbuildings = loadBuildings()
+activate Component
+
+Component -> Service: listbuildings = getList()
+activate Service
+Service -> MGC: listbuildings = getList() "Get /api/buildingsAll"
+activate MGC
+deactivate MGC
+deactivate Service
+deactivate Component
+
+
+x <- HTML: Displays the form to update a building
+deactivate HTML
+x -> HTML: Fills the form and clicks on save
+activate HTML
+HTML -> Component: updateBuilding()
+activate Component
+Component -> DTO: buildingDTO = updateBuilding()
+activate DTO
+deactivate DTO
+Component -> Service: response = updateBuilding(buildingDTO)
+activate Service
+Service -> MGC: responseBuilding = updateBuilding(buildingDTO) "Put /api/buildings"
+activate MGC
+deactivate MGC
+deactivate Service
+
+Component --> HTML: responseMessage
+HTML --> x: Displays the responseMessage
+deactivate Component
+
+deactivate HTML
+@enduml

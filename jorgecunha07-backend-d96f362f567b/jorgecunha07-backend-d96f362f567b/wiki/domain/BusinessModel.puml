@@ -1,0 +1,109 @@
+@startuml
+
+skinparam class {
+    BackgroundColor LightYellow
+    ArrowColor Black
+    BorderColor Black
+}
+
+    class Building {
+        +BuildingCode: String
+        +BuildingName: String
+        +BuildingSize: Size
+        +BuildingDescription: String
+    }
+
+    class Floor {
+        +floorNumber: int
+        +MaxDimensions: Size
+        +floorMap: File
+        +floorDescription: String
+    }
+
+    class Room {
+        +name: String
+        +type: String
+        +Description: String
+        +floorNumber : int
+    }
+
+    class Passageway {
+        +BuildingCodeA : String
+        +BuildingCodeB : String
+        +floorNumberA : int
+        +floorNumberB : int
+        +locationA : Location
+        +locationB : Location
+    }
+
+    class Elevator {
+        +BuildingCode: String
+        +floors : String
+        +location : Location
+    }
+
+
+
+    class Robot {
+        +RobotCode : String
+        +RobotDescription: String
+        +TypeName: String
+        +RobotState: State
+        +SerialNumber: String
+        +Nickname: String
+    }
+
+    class RobotType {
+        +DescriptionRobotType: String
+        +robotTypeName: String
+        +robotBrand: String
+        +robotModel: String
+        +supportedTaskTypes : Array
+    }
+
+
+    abstract class Task {
+        +TaskId: String
+        +TaskState: State
+        +Destination: Location
+    }
+
+    class Transport_Task {
+        +Pickup_Room: Room
+        +Delivery_Room: Room
+        +Contact_Start: Contact
+        +Contact_End: Contact
+        +ConfirmationCode: String
+        +Description : String
+    }
+
+    class Surveillance_Task {
+        +Target_Building: Building
+        +Target_Floor: Floor
+        +contactInfo: ContactInfo
+    }
+
+
+    class User {
+        +Password: UserPassword
+        +email: String
+        +role: Role
+        +firstName: String
+        +lastName: String
+    }
+
+
+' Relationships
+
+Building "1" --> "*" Floor
+Floor "1" --> "*" Room
+Room "1" --> "*" Robot : Used by
+Robot "1" --> "*" Task : Executes
+Robot "1" --> "1" RobotType : has >
+User "1" --> "*" Robot : Manages
+User "1" --> "*" Task : Approves
+Task "1" <-- "1" Transport_Task : < is
+Task "1" <-- "1" Surveillance_Task : < is
+Elevator "1" -- "1..*" Floor : connects >
+Passageway "1" --- "2" Floor: allows access >
+@enduml

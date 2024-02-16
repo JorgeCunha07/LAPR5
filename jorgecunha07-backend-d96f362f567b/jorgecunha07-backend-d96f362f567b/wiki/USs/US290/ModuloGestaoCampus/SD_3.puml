@@ -1,0 +1,57 @@
+@startuml
+boundary X
+participant ":RouteElevator" as ROUTE
+participant "ElevatorController\n<<Controller>>" as CTRL
+participant "ElevatorMapper\n<<Json2DTO>>" as MAPPER
+participant "ElevatorDTO\n<<DTO>>" as DTO
+participant "ElevatorService\n<<Service>>" as SRV
+participant "Elevator\n<<Entity>>" as ENTITY
+participant "ElevatorRepo\n:IElevatorRepo<<Repository>>" as REPO
+participant "ElevatorMap\n<<Domain2Data>>" as MAPPER2
+participant "DataElevator<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : GET /elevators/all (json)
+activate ROUTE
+ROUTE -> CTRL : getElevatorsByBuilding(param1: string)
+    activate CTRL
+
+
+    CTRL -> SRV : elevatorDTO = getElevatorsByBuilding(elevatorDTO)
+        activate SRV
+
+        SRV -> REPO : getElevatorsByBuilding
+            activate REPO
+
+
+
+            REPO -> DB : getElevatorsByBuilding
+                activate DB
+                deactivate DB
+
+            deactivate REPO
+        SRV -> MAPPER : iElevatorDTO[] = toDTO(elevators[])
+        activate MAPPER
+          loop (while data available)
+              MAPPER -> ENTITY : elevatorbuildingFinderId = getbuildingFinderId()
+                              activate ENTITY
+                              deactivate ENTITY
+                          MAPPER -> ENTITY : elevatorfloorsList = getfloorsList()
+                              activate ENTITY
+                              deactivate ENTITY
+                       MAPPER -> ENTITY : elevatorlocation = getElevatorlocation()
+                              activate ENTITY
+                              deactivate ENTITY
+          end loop
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

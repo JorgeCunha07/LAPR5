@@ -1,0 +1,165 @@
+@startuml
+
+
+boundary X
+participant ":RouteRobotType" as ROUTE
+participant "RobotTypeController\n<<Controller>>" as CTRL
+participant "RobotTypeMapper\n<<Json2DTO>>" as MAPPER
+participant "RobotTypeDTO\n<<DTO>>" as DTO
+participant "RobotTypeService\n<<Service>>" as SRV
+participant "RobotType\n<<Entity>>" as ENTITY
+participant "RobotTypeRepo\n:IRobotTypeRepo<<Repository>>" as REPO
+participant "RobotTypeMap\n<<Domain2Data>>" as MAPPER2
+participant "DataRobotType<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : POST /robotType(json)
+activate ROUTE
+ROUTE -> CTRL : createRobotType(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO** : create(json)
+        deactivate MAPPER
+    CTRL -> SRV : robotTypeDTO = createRobotType(robotTypeDTO)
+        activate SRV
+        SRV -> ENTITY** : robotType = create(robotTypeDTO)
+        SRV -> REPO : save(robotType)
+            activate REPO
+            REPO -> MAPPER2 : dataRobotType = toData(robotType)
+                activate MAPPER2
+                MAPPER2 -> ENTITY : getRobotTypeName()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : gerBrand()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getModel()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getSupportedTaskTypes()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> DATA** : dataRobotType = create(robotTypeName,brand,model,description,supportedTaskTypes)
+                deactivate MAPPER2
+            REPO -> DB : save(dataRobotType)
+                activate DB
+                deactivate DB
+            deactivate REPO
+        SRV -> MAPPER : toDTO(robotType)
+            activate MAPPER
+                MAPPER -> ENTITY : getRobotTypeName()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : gerBrand()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getModel()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getSupportedTaskTypes()
+                    activate ENTITY
+                    deactivate ENTITY
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml
+@startuml
+
+
+boundary X
+participant ":RouteRobotType" as ROUTE
+participant "RobotTypeController\n<<Controller>>" as CTRL
+participant "RobotTypeMapper\n<<Json2DTO>>" as MAPPER
+participant "RobotTypeDTO\n<<DTO>>" as DTO
+participant "RobotTypeService\n<<Service>>" as SRV
+participant "RobotType\n<<Entity>>" as ENTITY
+participant "RobotTypeRepo\n:IRobotTypeRepo<<Repository>>" as REPO
+participant "RobotTypeMap\n<<Domain2Data>>" as MAPPER2
+participant "DataRobotType<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : POST /robotType(json)
+activate ROUTE
+ROUTE -> CTRL : createRobotType(json)
+    activate CTRL
+    CTRL -> CTRL : validateJson()
+        activate CTRL
+        deactivate CTRL
+    CTRL -> MAPPER : toDTO(json)
+        activate MAPPER
+        MAPPER -> DTO** : create(json)
+        deactivate MAPPER
+    CTRL -> SRV : robotTypeDTO = createRobotType(robotTypeDTO)
+        activate SRV
+        SRV -> ENTITY** : robotType = create(robotTypeDTO)
+        SRV -> REPO : save(robotType)
+            activate REPO
+            REPO -> MAPPER2 : dataRobotType = toData(robotType)
+                activate MAPPER2
+                MAPPER2 -> ENTITY : getRobotTypeName()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : gerBrand()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getModel()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> ENTITY : getSupportedTaskTypes()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER2 -> DATA** : dataRobotType = create(robotTypeName,brand,model,description,supportedTaskTypes)
+                deactivate MAPPER2
+            REPO -> DB : save(dataRobotType)
+                activate DB
+                deactivate DB
+            deactivate REPO
+        SRV -> MAPPER : toDTO(robotType)
+            activate MAPPER
+                MAPPER -> ENTITY : getRobotTypeName()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getDescription()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : gerBrand()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getModel()
+                    activate ENTITY
+                    deactivate ENTITY
+                MAPPER -> ENTITY : getSupportedTaskTypes()
+                    activate ENTITY
+                    deactivate ENTITY
+
+            deactivate MAPPER
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

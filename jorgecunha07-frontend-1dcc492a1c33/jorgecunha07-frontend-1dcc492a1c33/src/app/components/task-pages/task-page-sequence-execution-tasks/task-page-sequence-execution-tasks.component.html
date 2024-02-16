@@ -1,0 +1,52 @@
+<div class="task-page-sequence-execution-tasks">
+  <div class="page-container">
+    <div class="card">
+      <h2>Task Sequence Execution</h2>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+          <tr>
+            <th>Select</th>
+            <th>Task Name</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>User</th>
+            <th>From Location</th>
+            <th>To Location</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of listTasks">
+            <td>
+              <input type="checkbox" [checked]="isTaskSelected(task)" (change)="onSelectTask(task)">
+            </td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.taskStatus }}</td>
+            <td>{{ task.taskType }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.user }}</td>
+            <td>{{ formatLocation(task.fromLocation) }}</td>
+            <td>{{ formatLocation(task.toLocation) }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-submit" (click)="sendSelectedTasksBack()">Create Best Path</button>
+      </div>
+    </div>
+
+    <div *ngIf="sequenceResult" class="card">
+      <h3>Sequence Result</h3>
+      <p><strong>Minimum Cost:</strong> {{ sequenceResult.minCost }}</p>
+      <p><strong>Minimum Sequence:</strong> {{ sequenceResult.minSequence.join(', ') }}</p>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-submit" (click)="goBack()">Go Back</button>
+    </div>
+  </div>
+</div>

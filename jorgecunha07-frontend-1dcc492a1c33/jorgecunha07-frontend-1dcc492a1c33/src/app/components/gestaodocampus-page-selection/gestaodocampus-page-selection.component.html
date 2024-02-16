@@ -1,0 +1,23 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Select a Campus Management Option</h2>
+    <div class="module-card" (click)="navigateTo(buildingPath)">
+      <h3>Building</h3>
+    </div>
+    <div class="module-card" (click)="navigateTo(floorPath)">
+      <h3>Floor</h3>
+    </div>
+    <div class="module-card" (click)="navigateTo(elevatorPath)">
+      <h3>Elevator</h3>
+    </div>
+    <div class="module-card" (click)="navigateTo(roomPath)">
+      <h3>Room</h3>
+    </div>
+    <div class="module-card" (click)="navigateTo(passagewayPath)">
+      <h3>Passageway</h3>
+    </div>
+  </div>
+  <div class="module-card" (click)="navigateTo(modules)">
+    <h3>Go Back</h3>
+  </div>
+</div>

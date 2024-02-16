@@ -1,0 +1,29 @@
+@startuml
+
+skinparam BackgroundColor #afe3fa
+
+component App #afe3fa {
+    port UI
+    component [Frontend] #9ec3ff
+    component [Tarefas] #cdffba
+    component [Dispositivos + Instalações] #f7b0f4
+    component [Planeamento] #f2e8ac
+    interface TarefasAPI #000
+    interface DispositivosAPI #000
+    interface PlaneamentoAPI #000
+
+    TarefasAPI - [Tarefas] 
+    DispositivosAPI - [Dispositivos + Instalações]
+    PlaneamentoAPI - [Planeamento]
+}
+
+[Frontend] -d-> DispositivosAPI
+[Frontend] -r-> PlaneamentoAPI
+[Frontend] -l-> TarefasAPI
+[Frontend] -u-> UI
+[Tarefas] -d-> DispositivosAPI
+[Planeamento] -d-> DispositivosAPI
+[PlaneamentoAPI] -l-> TarefasAPI
+[Tarefas] -d-> DispositivosAPI
+
+@enduml

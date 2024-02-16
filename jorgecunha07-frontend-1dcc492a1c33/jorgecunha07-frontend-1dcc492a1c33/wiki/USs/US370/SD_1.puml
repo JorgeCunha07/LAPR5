@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor  FleetManager
+participant  System
+
+activate FleetManager
+FleetManager -> System : requests patch of a robot (enable/disable)
+deactivate System
+FleetManager -> System : sends information to the patch of the robot (enable/disable)
+activate System
+FleetManager <- System : delivers success or failure of the requests
+deactivate System
+
+@enduml

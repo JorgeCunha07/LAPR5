@@ -1,0 +1,2 @@
+password com os parametros necessarios
+email com os padroes necessarios

@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor CampusManager
+CampusManager -> SPA : selects option to update Building
+activate SPA
+CampusManager <- SPA : Displays the form to update a building
+deactivate SPA
+CampusManager -> SPA : Fills the form and clicks on save
+activate SPA
+SPA -> MGC: "api/building" -> Put
+activate MGC
+
+MGC -> MGC: Handles the body request,updates \n and saves the building
+activate MGC
+deactivate MGC
+SPA <- MGC: Response status and Json
+CampusManager <- SPA: Shows the response status and Json
+
+
+
+
+
+@enduml

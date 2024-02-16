@@ -1,0 +1,44 @@
+@startuml
+boundary X
+participant ":RouteBuilding" as ROUTE
+participant "BuildingController\n<<Controller>>" as CTRL
+participant "BuildingMapper\n<<Json2DTO>>" as MAPPER
+participant "BuildingDTO\n<<DTO>>" as DTO
+participant "BuildingService\n<<Service>>" as SRV
+participant "Building\n<<Entity>>" as ENTITY
+participant "BuildingRepo\n:IBuildingRepo<<Repository>>" as REPO
+participant "BuildingMap\n<<Domain2Data>>" as MAPPER2
+participant "DataBuilding<<\n<<Data>>" as DATA
+database "dbDriver\n<<Database>>" as DB
+
+X -> ROUTE : GET /buildings/all (json)
+activate ROUTE
+ROUTE -> CTRL : getAllBuilding(json)
+    activate CTRL
+
+
+    CTRL -> SRV : buildingDTO = getAllBuilding(buildingDTO)
+        activate SRV
+
+        SRV -> REPO : iBuildingDTO[] = getAllBuilding()
+            activate REPO
+
+
+
+            REPO -> DB : iBuildingDTO[] = getAllBuilding()
+                activate DB
+                deactivate DB
+
+            deactivate REPO
+
+        deactivate SRV
+    CTRL -> CTRL : generateRes(json)
+        activate CTRL
+        deactivate CTRL
+
+    CTRL --> ROUTE : response
+    deactivate CTRL
+    ROUTE -> X : response
+deactivate ROUTE
+
+@enduml

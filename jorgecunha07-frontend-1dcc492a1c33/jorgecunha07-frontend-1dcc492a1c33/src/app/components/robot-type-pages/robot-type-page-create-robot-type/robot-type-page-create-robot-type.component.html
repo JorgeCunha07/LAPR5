@@ -1,0 +1,44 @@
+<div class="page-container">
+  <div class="card">
+    <h2>Create New Robot Type</h2>
+
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <!-- RobotType creation form -->
+    <form (ngSubmit)="createRobotType()">
+      <!-- Robot type name -->
+      <div class="form-group">
+        <label for="robotTypeName">Robot Type Name:</label>
+        <input type="text" class="form-control" id="robotTypeName" [(ngModel)]="robotType.robotTypeName" name="robotTypeName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="robotBrand">Robot Brand:</label>
+        <input type="text" class="form-control" id="robotBrand" [(ngModel)]="robotType.robotBrand" name="robotBrand" required>
+      </div>
+
+      <div class="form-group">
+        <label for="robotModel">Robot Model:</label>
+        <input type="text" class="form-control" id="robotModel" [(ngModel)]="robotType.robotModel" name="robotModel" required>
+      </div>
+
+      <!-- Supported Task Types -->
+      <div class="form-group">
+        <label>Supported Task Types:</label>
+        <div *ngFor="let taskType of availableTaskTypes" class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="taskType.selected" name="supportedTaskTypes" (change)="toggleTaskType(taskType)">
+            {{ taskType.display }}
+          </label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-submit">Create Robot Type</button>
+        <button type="button" class="btn-back" (click)="goBack()">Back</button>
+      </div>
+    </form>
+  </div>
+</div>

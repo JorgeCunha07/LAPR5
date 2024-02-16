@@ -1,0 +1,51 @@
+@startuml Update Passageway
+actor "User" as user
+participant "Passageway-page-update-passageway\n<<HTML>>" as html
+participant "PassagewayUpdateComponent\n<<Component>>" as component
+participant "PassagewayService\n<<Service>>" as service
+participant "PassagewayRepo\n<<Repository>>" as passagewayRepo
+participant "BuildingRepo\n<<Repository>>" as buildingRepo
+participant "PassagewayMap\n<<Mapper>>" as passagewayMap
+participant "Modulo de Gestão de Campus\n<<Backend>>" as mgc
+
+user -> html: selectUpdatePassageway()
+activate html
+
+html -> component: loadPassagewayDetails()
+activate component
+
+component -> service: updatePassageway(passagewayDTO)
+activate service
+
+service -> mgc: "PUT /api/passageways/{id}"
+activate mgc
+mgc -> passagewayRepo: findByBuildingCodes()
+activate passagewayRepo
+passagewayRepo -> mgc: return existingPassageway
+deactivate passagewayRepo
+
+mgc -> buildingRepo: findByCode()
+activate buildingRepo
+buildingRepo -> mgc: return building
+deactivate buildingRepo
+
+mgc -> passagewayRepo: update(existingPassageway)
+activate passagewayRepo
+passagewayRepo -> mgc: confirm update
+deactivate passagewayRepo
+
+mgc -> passagewayMap: toDTO(updatedPassageway)
+activate passagewayMap
+passagewayMap -> mgc: return updatedPassagewayDTO
+deactivate passagewayMap
+deactivate mgc
+
+service -> component: return Result.ok(updatedPassagewayDTO)
+deactivate service
+
+component -> html: displayUpdateMessage()
+deactivate component
+
+html -> user: showUpdateResult()
+deactivate html
+@enduml
